@@ -1,0 +1,455 @@
+<?php
+
+/**
+ *
+ * implements hook_install()
+ */
+function tuscblackchamber_install() {
+  variable_set('tabcc_mail_addr_street1', '2626 7th Street');
+  variable_set('tabcc_mail_addr_street2', '');
+  variable_set('tabcc_mail_addr_city', 'Tuscaloosa');
+  variable_set('tabcc_mail_addr_state', 'AL');
+  variable_set('tabcc_mail_addr_zip', '35401');
+  variable_set('tabcc_phy_addr_street1', '2626 7th Street');
+  variable_set('tabcc_phy_addr_street2', '');
+  variable_set('tabcc_phy_addr_city', 'Tuscaloosa');
+  variable_set('tabcc_phy_addr_state', 'AL');
+  variable_set('tabcc_phy_addr_zip', '35401');
+  variable_set('tabcc_phone', '205-614-8585');
+  
+  // update maintenance mode message
+  $maintMsg = "Our website is currently unavailable due to scheduled maintenance. ";
+  $maintMsg .= "We will be back online once maintenance has completed. Thank you for your patience.";
+  variable_set('maintenance_mode_message', $maintMsg);
+  
+  // add variables for the html theme
+  variable_set('tabcc_theme_slide1', '');
+  variable_set('tabcc_theme_slide2', '');
+  variable_set('tabcc_theme_slide3', '');
+  variable_set('file_temporary_path', '/tmp');
+  variable_set('tuscblackchamber_monthly_news_last_gen', 1415746461);
+  
+  // set newsletter variables
+  variable_set('tuscblackchamber_teaser_length', 200);
+  variable_set('tuscblackchamber_monthly_news_last_gen', 1415318400);
+  variable_set('tuscblackchamber_weekly_news_last_gen', 1415318400);
+  variable_set('tuscblackchamber_webmaster_email', 'krobinson@tuscblackchamber.org');
+  
+  // set privacy policy
+  $privacyPolicyText = '<p>Tuscaloosa Area Black Chamber of Commerce is committed to protecting your personal information.
+  This policy is to inform you about how we use and collect your information.</p><p><strong>What information do we
+  collect?</strong><br />Tuscaloosa Area Black Chamber of Commerce collects information about you that includes, but is
+  not limited to, your legal name, phone number, email address, payments, your IP address, pages you visit, the web
+  browser you use, and operating system that you use. We do not collect credit card details because we use PayPal for
+  payment processing. The information collected can be used by Tuscaloosa Area Black Chamber of Commerce for an
+  indefinite period of time.</p><p><strong>How do we collect the information?</strong><br />Tuscaloosa Area Black
+  Chamber of Commerce collects information using Google Analytics, internet cookies, and information entered by you into
+  the Tuscaloosa Area Black Chamber of Commerce website.</p><p><strong>How do we use the information?</strong><br />Tuscaloosa
+  Area Black Chamber of Commerce uses the information to analyze traffic flows through our website and frequency of
+  visits to our website(s) to improve our website design and content. Your contact information may be used to send
+  marketing materials or information about services and products offered by Tuscaloosa Area Black Chamber of Commerce.
+  Personally identifiable information will not be disclosed to third-parties without your prior consent.</p><p><strong>How
+  do we protect your information?</strong><br />Your information is only accessible by Tuscaloosa Area Black Chamber of
+  Commerce staff and individuals who are authorized to support our operations. Technological security measures have been
+  put in place including firewalls, password-restricted access, and continuous updates, that protect from unauthorized
+  individuals from accessing your information.</p><p>If you have questions regarding this Privacy Policy, please
+  contact Tuscaloosa Area Black Chamber of Commerce.</p><p>Last Updated: October 1, 2014</p>';
+  variable_set('tabcc_privacy', $privacy);
+  
+  // create node types for cases and projects
+  node_types_rebuild();
+  
+  // create scheduled newsletter type projects
+  $t = get_t();
+  $node_example = array(
+    'type' => 'tabcc_newsletter',
+    'name' => $t('TABCC Scheduled Newsletter'),
+    'base' => 'node_content',
+    'description' => $t('This is a newsletter that was sent those on the TABCC Mailing List.'),
+    'body_label' => $t('Newsletter Text'),
+    'title_label' => 'Newsletter Subject',
+  );
+  $content_type = node_type_set_defaults($node_example);
+  node_add_body_field($content_type, 'Newsletter Text');
+  
+  // Check if we create content type or update.
+  $status = node_type_save($content_type);
+  
+  // Replacement rule for the messages.
+  $t_args = array('%name' => $content_type->name);
+  if ($status == SAVED_UPDATED) { // update case
+    drupal_set_message($t('The content type %name has been updated.', $t_args));
+  }
+  elseif ($status == SAVED_NEW) { // create case
+    drupal_set_message($t('The content type %name has been added.', $t_args));
+    watchdog('node', 'Added content type %name.', $t_args, WATCHDOG_NOTICE, l($t('view'), 'admin/structure/types'));
+  }
+  
+  // add new content type of newsletter_article
+  $specFeatureNode = array(
+    'type' => 'tabcc_spec_feature',
+    'name' => 'TABCC eNewsletter Special Feature',
+    'base' => 'node_content',
+    'description' => 'This is for special content to be added to the eNewsletter.',
+    // 'body_label' => 'Example Description',
+  );
+  $content_type = node_type_set_defaults($specFeatureNode);
+  node_add_body_field($content_type);
+
+  // Check if we create content type or update.
+  $status = node_type_save($content_type);
+
+  // Replacement rule for the messages.
+  $t_args = array('%name' => $content_type->name);
+  if ($status == SAVED_UPDATED) { // update case
+    drupal_set_message(t('The content type %name has been updated.', $t_args));
+  }
+  elseif ($status == SAVED_NEW) { // create case
+    drupal_set_message(t('The content type %name has been added.', $t_args), 'status');
+    watchdog('node', 'Added content type %name.', $t_args, WATCHDOG_NOTICE, l('view', 'admin/structure/types'));
+  }
+} // end function
+
+/**
+ * implements hook_enable()
+ */
+function tuscblackchamber_enable() {
+  // add mailing system
+  $current = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+  $addition = array('tuscblackchamber' => 'TuscblackchamberMailSystem');
+  variable_set('mail_system', array_merge($current, $addition));
+} // end function
+
+/**
+ * implements hook_disable()
+ */
+function tuscblackchamber_disable() {
+  // remove mail system for module
+  $mail_system = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+  unset($mail_system['tuscblackchamber']);
+  variable_set('mail_system', $mail_system);
+} // end function
+
+/**
+ *
+ * implements hook_uninstall()
+ */
+function tuscblackchamber_uninstall() {
+  // delete the variables from the database
+  $db_or = db_or()
+    ->condition('name', '%tabcc%', 'LIKE')
+    ->condition('name', '%tuscblackchamber%', 'LIKE');
+  $result = db_delete('variable')
+    ->condition($db_or)
+    ->execute();
+    
+  // remove content types
+  $nodeIds = array();
+  
+  $result = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'tabcc_newsletter', '=')
+    ->execute();
+  foreach($result as $row) {
+    $nodeIds[] = $row->nid;
+  } // end foreach
+  
+  node_delete_multiple($nodeIds);
+  node_type_delete('tabcc_newsletter');
+
+  // Gather all the example content that might have been created while this
+  // module was enabled.  Simple selects still use db_query().
+  // http://api.drupal.org/api/function/db_query/7
+  $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+  $result = db_query($sql, array(':type' => 'tabcc_spec_feature'));
+  $nids = array();
+  foreach ($result as $row) {
+    $nids[] = $row->nid;
+  }
+  
+  // Delete all the nodes at once
+  // http://api.drupal.org/api/function/node_delete_multiple/7
+  node_delete_multiple($nids);
+  
+  // Delete our content type
+  // http://api.drupal.org/api/function/node_type_delete/7
+  node_type_delete('tabcc_spec_feature');
+  
+  // add the translation for the custom message
+  db_delete('languages')
+    ->condition('language', 'en-tabcc', '=')
+    ->execute();
+  db_delete('locales_target')
+    ->condition('language', 'en-tabcc', '=')
+    ->execute();
+} // end function
+
+/**
+ * Create orders for each item in CiviCRM for each contact
+ * 
+ */
+function tuscblackchamber_update_7216() {
+  $transaction = db_transaction();
+  
+  try{    
+    // select the contacts with their membership information
+    $query = "SELECT IFNULL(cc.first_name, 'Unknown') as first_name, IFNULL(cc.last_name, 'Customer') as last_name, " . 
+    "IFNULL(cc.organization_name, ' ') as organization_name, cctrb.source, UNIX_TIMESTAMP(cctrb.receive_date) AS created, " .
+    "IFNULL(ca.street_address, '') as street_address, IFNULL(ca.city, '') as city, ucz.zone_id, IFNULL(ca.postal_code, '') as postal_code, " . 
+    "cctrb.total_amount, cctrb.invoice_id, ce.email " .
+    "FROM civicrm_contribution cctrb, civicrm_contact cc, civicrm_address ca, " .
+    "civicrm_state_province csp, uc_zones ucz, civicrm_email ce " .
+    "WHERE cctrb.is_test = 0 " .
+    "AND cc.id = cctrb.contact_id AND ucz.zone_name = csp.name COLLATE utf8_unicode_ci " .
+    "AND ca.contact_id = cc.id AND ca.is_primary = 1 AND csp.id = ca.state_province_id " . 
+    "and ce.is_primary = 1 and ce.contact_id = cctrb.contact_id ";
+    $result = db_query($query);
+    
+    foreach($result as $row) {
+      // create the order
+      $order_id = db_insert('uc_orders')
+        ->fields(array(
+          'uid' => 0,
+          'order_status' => 'completed',
+          'order_total' => $row->total_amount,
+          'product_count' => 1,
+          'primary_email' => $row->email,
+          'delivery_first_name' => $row->first_name,
+          'delivery_last_name' => $row->last_name,
+          'delivery_phone' => '2056148585',
+          'delivery_company' => $row->organization_name,
+          'delivery_street1' => $row->street_address,
+          'delivery_city' => $row->city,
+          'delivery_zone' => $row->zone_id,
+          'delivery_postal_code' => $row->postal_code,
+          'billing_first_name' => $row->first_name,
+          'billing_last_name' => $row->last_name,
+          'billing_phone' => '2056148585',
+          'billing_company' => $row->organization_name,
+          'billing_street1' => $row->street_address,
+          'billing_city' => $row->city,
+          'billing_zone' => $row->zone_id,
+          'billing_postal_code' => $row->postal_code,
+          'created' => $row->created,
+          'modified' => REQUEST_TIME,
+          'host' => 'localhost',
+          'currency' => 'USD',
+        ))
+        ->execute();
+      
+      // add the products as line items
+      db_insert('uc_order_products')
+        ->fields(array(
+          'order_id' => $order_id,
+          'nid' => 1,
+          'title' => $row->source,
+          'model' => strtoupper(uniqid()),
+          'qty' => 1,
+          'price' => $row->total_amount,
+          'cost' => $row->total_amount,
+          'weight' => 0,
+          'weight_units' => 'pounds',
+          'data' => '',
+        ))
+        ->execute();
+      
+      // add the comments to the order
+      db_insert('uc_order_comments')
+        ->fields(array(
+          'order_id' => $order_id,
+          'uid' => 1,
+          'order_status' => 'completed',
+          'notified' => 1,
+          'message' => 'Original Invoice ID: ' . $row->invoice_id,
+          'created' => $row->created,
+        ))
+        ->execute();
+      
+      // add the payment to order
+      db_insert('uc_payment_other')
+        ->fields(array(
+          'order_id' => $order_id,
+          'description' => 'Original Invoice ID: ' . $row->invoice_id,
+        ))
+        ->execute();
+      
+      // add the receipt to the order
+      db_insert('uc_payment_receipts')
+        ->fields(array(
+          'order_id' => $order_id,
+          'method' => 'import',
+          'amount' => $row->total_amount,
+          'uid' => 1,
+          'data' => '',
+          'comment' => '',
+          'received' => $row->created,
+        ))
+        ->execute();
+    } // end foreach
+    
+    return "Update to 2.16 completed succesfully.";
+  }
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('tuscblackchamber', $e);
+    throw new DrupalUpdateException("Failed to update to 2.16. " . $e);
+  } // end transaction
+} // end function
+
+/**
+ * Remove the mailing pending table for sending email to the mailing list.
+ */
+function tuscblackchamber_update_7217() {
+  $transaction = db_transaction();
+  
+  try{
+    // db_drop_table('tuscblackchamber_ml_pndng');
+    return "Update to 2.17 completed succesfully.";
+  }
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('tuscblackchamber', $e);
+    throw new DrupalUpdateException("Failed to update to 2.17. " . $e);
+  } // end transaction
+} // end function
+
+/**
+ * Delete old membership tables from database
+ */
+function tuscblackchamber_update_7218() {
+  $transaction = db_transaction();
+  
+  try{
+    db_drop_table('tmsd_ms_audit_log');
+    db_drop_table('tmsd_ms_business');
+    db_drop_table('tmsd_ms_business_category');
+    db_drop_table('tmsd_ms_contact_address');
+    db_drop_table('tmsd_ms_contact_email');
+    db_drop_table('tmsd_ms_contact_name');
+    db_drop_table('tmsd_ms_contact_phone');
+    db_drop_table('tmsd_ms_contact_phone_type');
+    db_drop_table('tmsd_ms_contact_prefix');
+    db_drop_table('tmsd_ms_contact_suffix');
+    db_drop_table('tmsd_ms_email_queue');
+    db_drop_table('tmsd_ms_membership');
+    db_drop_table('tmsd_ms_membership_type');
+    db_drop_table('tmsd_ms_payment');
+    db_drop_table('tmsd_ms_pay_method');
+    db_drop_table('tmsd_ms_state_province');
+    db_drop_table('tmsd_users');
+    
+    return "Update to 2.18 completed succesfully.";
+  }
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('tuscblackchamber', $e);
+    throw new DrupalUpdateException("Failed to update to 2.18. " . $e);
+  } // end transaction
+}
+
+/**
+ * Delete the unused variables from the database.
+ */
+function tuscblackchamber_update_7219() {
+  $transaction = db_transaction();
+  
+  try{
+    $result = db_select("SELECT name FROM {variable} LIKE 'autologout%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    } 
+    $result = db_select("SELECT name FROM {variable} LIKE 'autologout%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    } 
+    $result = db_select("SELECT name FROM {variable} LIKE 'fbsubscribe%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    } 
+    $result = db_select("SELECT name FROM {variable} LIKE 'logintoboggan%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    } 
+    $result = db_select("SELECT name FROM {variable} LIKE 'seo_checklist%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    } 
+    $result = db_select("SELECT name FROM {variable} LIKE 'smtp%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    } 
+    $result = db_select("SELECT name FROM {variable} LIKE 'xmlsitemap%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    }
+    $result = db_select("SELECT name FROM {variable} LIKE 'tabcc%'");
+    foreach($result as $row) {
+      variable_delete($row->name);
+    }
+    
+    return "Update to 2.19 completed succesfully.";
+  }
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('tuscblackchamber', $e);
+    throw new DrupalUpdateException("Failed to update to 2.19. " . $e);
+  } // end transaction
+}
+
+/**
+ * 
+ * Update order information to user ID for the respective contact.
+ */
+function tuscblackchamber_update_7220() {
+  $transaction = db_transaction();
+  
+  try{
+    $count = 0;
+    
+    db_query("UPDATE {uc_orders} SET primary_email = 'bounceituppartyrentals@yahoo.com' WHERE primary_email = 'bounceitupartyrentals@yahoo.com'");
+    
+    $result = db_query("SELECT uid, mail FROM {users}");
+    foreach($result as $row) {
+      db_query("UPDATE {uc_orders} SET uid = :uid WHERE primary_email = :mail", 
+        array(':uid' => $row->uid, ':mail' => $row->mail));
+      $count++;
+    }  
+    drupal_set_message($count . ' orders were matched and updated.', 'status', FALSE); 
+    
+    return "Update to 2.20 completed succesfully.";
+  }
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('tuscblackchamber', $e);
+    throw new DrupalUpdateException("Failed to update to 2.20. " . $e);
+  } // end transaction
+}
+
+/**
+ * Remove orphaned and unused field(s) from the database. 
+ */
+function tuscblackchamber_update_7221() {
+  $transaction = db_transaction();
+  
+  try{
+    field_delete_field('event_calendar_date');
+    field_delete_field('event_calendar_status');
+    db_query("delete from field_config_instance where field_name = '%event_calendar%'");
+    db_query("delete from field_config where field_name = '%event_calendar%'");
+    db_query("delete from field_config_instance where bundle like '%tabcc%'");
+    
+    return "Update to 2.21 completed succesfully.";
+  }
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('tuscblackchamber', $e);
+    throw new DrupalUpdateException("Failed to update to 2.21. " . $e);
+  } // end transaction
+}
+
+
+// delete CiviCRM tables from database
+// add attendee entry form page that generates orders for each
+// add membership entry form page that generates orders for each
+// implement engagement scores, retroactively calculate the score based on past activities.
+

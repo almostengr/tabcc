@@ -1,0 +1,392 @@
+<?php
+
+/**
+ * implements hook_menu()
+ */
+function tuscblackchamber_menu() {
+  $items = array();
+
+  // admin pages
+  $items['admin/config/system/tuscblackchamber'] = array(
+    'title' => t('tuscblackchamber.org Settings', array(), array()),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tuscblackchamber_admin_settings_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'tuscblackchamber.admin.php',
+  );
+  return $items;
+} // end function
+
+/**
+ * implements hook_cron()
+ */
+function tuscblackchamber_cron() {
+  module_load_include('inc', 'tuscblackchamber', 'tuscblackchamber.newsletter');
+  
+  tuscblackchamber_generate_monthly_email(FALSE);
+} // end function
+
+/**
+ *
+ * gets the physical address for TABCC
+ */
+function tuscblackchamber_getPhysicalAddress() {
+  $outputString = "";
+  $outputString = "2626 7th Street Tuscaloosa AL 35401";
+  return $outputString;
+} // end function
+
+/**
+ * implements hook_node_info()
+ */
+function tuscblackchamber_node_info() {
+  return array(
+    'tabcc_newsletter' => array(
+      'name' => 'TABCC Scheduled Newsletter',
+      'base' => 'node_content',
+      'description' => 'TABCC Scheduled Newsletter',
+      'has_title' => TRUE,
+      'title_label' => t('Newsletter Subject', array(), array()),
+      'locked' => TRUE,
+      'body_label' => t('Newsletter Text', array(), array()),
+    ),
+  );
+} // end function
+
+/**
+ * Email information submitted via either of the forms.
+ *
+ * Implements hook_form
+ *
+ * @param string $key
+ * @param array $message
+ * @param array $params
+*/
+function tuscblackchamber_mail($key, &$message, $params) {
+  module_load_include('inc', 'tuscblackchamber', 'tuscblackchamber.mychamber');
+  global $base_url;
+  $emailBody = "";
+  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+  $message['headers']['reply-to'] = 'pcade@tuscblackchamber.org; tuscblackchamber@gmail.com';
+  $message['headers']['cc'] = variable_get('tabcc_webmaster_email', 'krobinson@tuscblackchamber.org');
+
+  switch ($key){
+    case 'mail_list_msg':
+      $message['subject'] = $params['!mail_sbjct'];
+      $emailBody = "!mail_bdy";
+      break;
+      
+    case 'event_submit':
+      $message['subject'] .= t('Event Submitted', array(), array());
+      $emailBody = "A user has submitted an event to be posted to the TABCC website. Please review.";
+      break;
+      
+    case 'contact_tabcc':
+      $message['subject'] .= t('TABCC Online Contact', array(), array());
+      $emailBody = "A visitor has submitted the following request via the TABCC website." . "\r\n" . "\r\n" .
+        "Contact Name: !name" . "\r\n" .
+        "Email Address: !email" . "\r\n" .
+        "Phone Number: !phone" . "\r\n" .
+        "Message, comment or question: !messageComment" . "\r\n" .
+        "Visitor IP Address: !ipAddress";
+      break;
+
+    case 'newsletter_monthly':
+      // $message['headers']['bcc'] = 'tharam04@trlubuntu.att.net.'; 
+      // $message['headers']['cc'] = $params['!bcc'];
+      $message['headers']['bcc'] = $params['!bcc'];
+      drupal_set_message("BCC: " . $params['!bcc'], 'warning', FALSE);
+      $message['subject'] = "TABCC Monthly Newsletter, " . date("F Y");
+      $emailBody = "!htmlBody";
+      break;
+
+    case 'newsletter_events':
+      // $message['headers']['bcc'] = 'tharam04@trlubuntu.att.net'; 
+      $message['headers']['bcc'] = $params['!bcc'];
+      // $message['to'] = $params['!bcc'];
+      $message['subject'] = "TABCC Events This Week, " . date("F d, Y");
+      $emailBody = "!htmlBody";
+      break;
+
+    case 'watchdogerr':
+      $message['subject'] = "TABCC Website Watchdog Error";
+      $emailBody = "A watchdog error has been logged: See below.<br /><br /> !errorDetail";
+      break;
+
+  } // end switch ($key)
+
+  switch($key) {
+    case 'civicrm_user_create':
+    case 'newsletter':
+    case 'newsletter_events':
+      // do not add signature since it is already in text string
+      break;
+
+    default:
+      $emailBody .= "\r\n" . "\r\n" . "--" . "\r\n" .
+      $emailBody .= "Tuscaloosa Area Black Chamber of Commerce<br />";
+      $emailBody .= tuscblackchamber_getPhysicalAddress() . " | 205-614-8585<br />";
+      $emailBody .= "http://www.tuscblackchamber.org<br />";
+      $emailBody .= "Facebook: http://www.facebook.com/tuscblackcc<br />";
+      $emailBody .= "Twitter: http://twitter.com/tuscblackcc<br />";
+      break;
+  } // end switch
+  $message['body'][] = t($emailBody, $params, array());
+} // end function
+
+/**
+ *
+ * implements hook_block_info()
+ * @return The blocks that are available for the website
+ */
+function tuscblackchamber_block_info() {
+  $blocks = array();
+  
+  $blocks['tuscblackchamber_weather'] = array(
+    'info' => t('TABCC Main-Weather', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => "admin*",
+  );
+  $blocks['tuscblackchamber_affiliates'] = array(
+    'info' => t('TABCC Main-Affiliates', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+  );
+  $blocks['tuscblackchamber_contact_pretext'] = array(
+    'info' => t('TABCC Main-Contact Form Pre-text', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'contact',
+  );
+  $blocks['tuscblackchamber_mailing_list'] = array(
+    'info' => t('TABCC Main-Mailing List', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => "admin*\r\nuser*",
+  );
+  $blocks['tuscblackchamber_recruit'] = array(
+    'info' => t('TABCC Main-Recruit New Business', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+  );
+  $blocks['tuscblackchamber_social_media'] = array(
+    'info' => t('TABCC Main-Social Media', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+  );
+  $blocks['tuscblackchamber_footer'] = array(
+    'info' => t('TABCC Main-Footer', array(), array()),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+  );
+  $blocks['tuscblackchamber_weather'] = array(
+    'info' => t('TABCC Main-Weather', array(), array()),
+    'cache' => DRUPAL_NO_CACHE,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => "admin*",
+  );
+  $blocks['tabcc-footer'] = array(
+    'info' => t('TABCC-Footer', array(), array()),
+  );
+  
+  return $blocks;
+} // end function
+
+/**
+ *
+ * implements hook_block_view()
+ */
+function tuscblackchamber_block_view($delta = '') {
+  global $base_url;
+  $block = array();
+
+  switch($delta) {    
+    case 'tuscblackchamber_contact_pretext':
+      $address = tuscblackchamber_getPhysicalAddress();
+      $mapsAddress = str_replace(' ', '+', $address);
+      $mapsUrl = "http://maps.google.com/maps?q=" . $mapsAddress . "&oe=utf-8&hnear=" . $mapsAddress . "&gl=us&t=m&z=14";
+      $block['subject'] = "";
+      $block['content'] = "TABCC would love to hear from you. If you have any questions or " .
+      "comments about TABCC benefits or services, please feel free to contact us.<br /><br />" .
+      "<strong>Physical Address</strong><br />" . $address . "<br />" .
+      l(t("View on Google Maps"), $mapsUrl, array('attributes' => array('target' => '_blank'))) . "<br /><br />" .
+      "<strong>Mailing Address</strong><br />" . tuscblackchamber_getMailingAddress() . "<br /><br />" .
+      "<strong>Phone Number</strong><br />" . variable_get('tabcc_phone', '205-614-8585');
+      break;
+
+    case 'tuscblackchamber_footer':
+      $block['subject'] = "";
+      $block['content'] = l(t("Join TABCC"), "membership") . " | " .
+        l(t("Member Directory"), "members", array()) . " | " .
+        l(t("Privacy Policy", array(), array()), "privacy-policy", array()) . " | " .
+        l(t("Contact Us", array(), array()), "contact", array()) . " | " .
+        l(t("MyChamber Login", array(), array()), "user", array()) . "<br />" .
+        "Copyright &copy; 2011-" . date("Y") . " Tuscaloosa Area Black Chamber of Commerce";
+      break;
+
+    case 'tuscblackchamber_affiliates':
+      $block['subject'] = "TABCC Affiliates";
+      $block['content'] = "<ul>" .
+        "<li>" . l(t("Alabama State Black Chamber of Commerce", array(), array()),
+          "http://www.alblackcc.org", array('attributes' => array('target' => '_blank'))) . "</li>" .
+        "<li>" . l(t("Greater Birmingham Black Chamber of Commerce", array(), array()),
+          "http://www.gbbcc.info", array('attributes' => array('target' => '_blank'))) . "</li>" .
+        "<li>" . l(t("North Alabama African American Chamber of Commerce", array(), array()),
+          "http://www.naaachamber.org", array('attributes' => array('target' => '_blank'))) . "</li>" .
+        "</ul>";
+      break;
+
+    case 'tuscblackchamber_recruit':
+      $block['subject'] = "Attention Current and Prospective Business Owners!";
+      $block['content'] = '<p>Do you currently have a business or are planning on establishing your business in the Tuscaloosa,
+        Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber
+        of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing
+        programs and new initiatives that will help TABCC businesses move forward. ' .
+        l(t("Join today!", array(), array()), "membership", array()) . "</p>";
+      break;
+
+    case 'tuscblackchamber_social_media':
+      $block['subject'] = "Connect with TABCC";
+      $block['content'] = '<div id="fb-root">&nbsp;</div><script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-like content" data-action="like" data-href="https://www.facebook.com/tuscblackcc" data-layout="standard" data-share="true" data-show-faces="false" data-width="100">&nbsp;</div>' .
+        '<p>&nbsp;</p>' .
+        '<p><a class="twitter-follow-button" data-show-count="false" data-size="large" href="https://twitter.com/tuscblackcc">Follow @tuscblackcc</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></p>';
+      break;
+
+    case 'tuscblackchamber_mailing_list':
+      $block['subject'] = "TABCC Mailing List";
+      $block['content'] = "<p>To receive the latest information from TABCC,
+        including our upcoming events and quarterly newsletter, please " .
+        l(t("sign up for our mailing list", array(), array()),
+          "mailing-list-sign", array()) .
+        ".</p>";
+      break;
+      
+    case 'tuscblackchamber_weather':
+      $block['subject'] = "";
+      $block['content'] = '<div style="margin-left: auto; margin-right: auto; margin-bottom: 10px; width: 120px; height: 60px; background-image: url( http://vortex.accuweather.com/adcbin/netweather_v2/backgrounds/black_120x60_bg.jpg ); background-repeat: no-repeat; background-color: #000000;"><div id="NetweatherContainer" style="height: 48px;"><script type="text/javascript" src="http://netweather.accuweather.com/adcbin/netweather_v2/netweatherV2ex.asp?partner=netweather&amp;tStyle=whteYell&amp;logo=0&amp;zipcode=35401&amp;lang=eng&amp;size=7&amp;theme=black&amp;metric=0&amp;target=_self"></script></div><div style="text-align: center; font-family: arial, helvetica, verdana, sans-serif; font-size: 10px; line-height: 12px; color: #FFFFFF;"><a href="http://www.accuweather.com/us/al/tuscaloosa/35401/city-weather-forecast.asp?partner=netweather" style="color: #FFFFFF">Weather Forecast</a></div></div>';
+      break;
+  } // end switch($delta)
+  
+  return $block;
+} // end function
+
+/**
+ * implements hook_form_alter()
+ */
+function tuscblackchamber_form_alter(&$form, &$form_state, $form_id) {
+  switch($form_id) {
+    case 'user_login':
+      if (1421712000 > REQUEST_TIME) {
+        // display until Jan 20, 2015
+        $markup = "NOTE: All MyChamber accounts were recently updated. If you are not able to login ";
+        $markup .= "using your username/email and password combination, please use the Request ";
+        $markup .= "New Password option to reset your password.";
+        drupal_set_message($markup, 'warning', FALSE);
+      } // end if
+      break; // end case
+  } // end switch
+} // end function
+
+/**
+ *
+ * Disable accounts that have not been used after the defined amount of time.
+ */
+function tuscblackchamber_cron_disable_unused_accounts() {
+  $delayDisableDays = 120; // nubmer of days before disabling accounts
+  $delayDisableTime = REQUEST_TIME - ($delayDisableDays * 24 * 60 * 60);
+
+  // disable accounts for those that have not logged in after specified delay
+  $results = db_update('users')
+    ->fields(array(
+      'status' => 0, // disable
+      'pass' => user_password(20), // change password
+    ))
+    ->condition('access', $delayDisableTime, '<=')
+    ->condition('name', variable_get('rwswebsupport_cron_usr', ''), '!=')
+    ->execute();
+    
+  // block accounts that have not verified their data after one day.
+  $results = db_update('users')
+    ->fields(array(
+      'status' => 0,
+      'pass' => user_password(20),
+    ))
+    ->condition('access', 0, '=')
+    ->condition('login', 0, '=')
+    ->condition('created', REQUEST_TIME - (1 * 24 * 60 * 60), '<=')
+    ->condition('name', variable_get('rwswebsupport_cron_usr', ''), '!=')
+    ->execute();
+} // end function
+
+/**
+ *
+ * gets the mailing address for TABCC
+ */
+function tuscblackchamber_getMailingAddress() {
+  $outputString = "";
+
+  $outputString = "2626 7th Street Tuscaloosa AL 35401";
+  return $outputString;
+} // end function 
+
+/**
+ *
+ * formats a phone number in the proper format
+ * @param string $num
+ */
+function tuscblackchamber_support_formatPhone($num) {
+	$num = preg_replace('/[^0-9]/', '', $num);
+  $len = strlen($num);
+  switch($len){
+    case 7:
+      $num = preg_replace('/([0-9]{3})([0-9]{4})/', '$1-$2', $num);
+      break;
+    case 10:
+      $num = preg_replace('/([0-9]{3})([0-9]{3})([0-9]{4})/', '($1) $2-$3', $num);
+      break;
+    default:
+      //do nothing
+      break;
+  }
+	return $num;
+} // end function 
+
+/**
+ *
+ * Removes any formatting from the phone nubmer. Leaves digits only.
+ * @param string $num
+ */
+function tuscblackchamber_support_unformatPhone($num) {
+  $num = preg_replace('/[^0-9]/', '', $num);
+  return $num;
+} // end function 
+
+/**
+ * Custom class to be able to send HTML emails
+ */
+class tuscblackchamberMailSystem extends DefaultMailSystem {
+  /**
+   * Concatenate and wrap the e-mail body for plain-text mails.
+   *
+   * @param $message
+   *   A message array, as described in hook_mail_alter().
+   *
+   * @return
+   *   The formatted $message.
+   */
+  public function format(array $message) {
+    $message['body'] = implode("\n\n", $message['body']);
+    $message['body'] = drupal_wrap_mail($message['body']);
+    return $message;
+  } // end function
+} // end class
+
