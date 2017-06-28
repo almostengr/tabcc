@@ -10,6 +10,6 @@ sites/*/*private*
 site/default/temp
 
 cache/*
-error_log
+error_log/*
 default.htm
 
