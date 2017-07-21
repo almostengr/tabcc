@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * implements hook_schema()
+ */
+function bbitautotweet_schema() {
+  $schema['bbitautotweet'] = array(
+    'description' => 'Tweets to be used by the BBIT Auto Tweet Module.',
+    'fields' => array(
+      'tweetid' => array(
+        'description' => 'Tweet ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'tweet' => array(
+        'type' => 'varchar',
+        'length' => 140,
+        'not null' => TRUE,
+        'description' => 'The tweet that will be containted the body of the node.',
+      ),
+    ),
+    'primary key' => array('tweetid'),
+  );
+  return $schema;
+} // end function bbitautotweet_schema()
+
+/**
+ * implements hook_install()
+ */
+function bbitautotweet_install() {
+  $t = get_t();
+  $node_example = array(
+    'type' => 'bbit_auto_tweet',
+    'name' => $t('BBIT Auto Tweet', array(), array()),
+    'base' => 'node_content',
+    'description' => $t('This is a node type that automatically creates new nodes.', array(), array()),
+    'body_label' => $t('Automatically create new nodes that can be linked from TwitterFeed.', array(), array())
+  );
+  $content_type = node_type_set_defaults($node_example);
+  node_add_body_field($content_type);
+
+  $status = node_type_save($content_type); // Check if we create content type or update.
+
+  $t_args = array('%name' => $content_type->name); // Replacement rule for the messages.
+  if ($status == SAVED_UPDATED) { // update case
+    drupal_set_message($t('The content type %name has been updated.', $t_args));
+  }
+  elseif ($status == SAVED_NEW) { // create case
+    drupal_set_message($t('The content type %name has been added.', $t_args));
+    watchdog('node', 'Added content type %name.', $t_args, WATCHDOG_NOTICE, l($t('view', array(), array()), 'admin/structure/types'));
+  }
+} // end function bbitautotweet_install()
+
+/**
+ * implements hook_uninstall()
+ */
+function bbitautotweet_uninstall() {
+  $nids = array();
+
+  // Gather all the example content that might have been created while this module was enabled.
+  $result = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'bbit_auto_tweet', '=')
+    ->execute();
+  foreach ($result as $row) {
+    $nids[] = $row->nid;
+  }
+  node_delete_multiple($nids); // delete all the nodes at once
+  node_type_delete('bbit_auto_tweet'); // delete the content type
+} // end function bbitautotweet_uninstall()
+
+/**
+ * Remove nodes that were created more than 14 days ago. 
+ */
+function bbitautotweet_update_7105() {
+  $transaction = db_transaction();
+  
+  try{
+    $created = REQUEST_TIME - (86400 * 14);
+    $result = db_query("delete from {node} where type = :type AND created <= :created", 
+      array(':created' => $created, ':type' => 'bbit_auto_tweet'));
+    
+    return "Update completed successfully.";
+  } // end try
+  catch(Exception $e) {
+    $transaction->rollback();
+    watchdog_exception('bbitautotweet', $e);
+    throw new DrupalUpdateException("Failure to update.");
+  } // end catch
+} // end function
+

@@ -1,0 +1,10 @@
+name = BBIT Auto Tweet
+description = Automatically creates a new node from a list of tweets. Nodes are listed as items in a RSS feed that is usable by TwitterFeed. Visit http://www.twitterfeed.com to setup and configure your accounts.
+package = Black Box Innovation Technologies
+core = 7.x
+version = 7.x-1.5
+
+files[] = bbitautotweet.install 
+files[] = bbitautotweet.module
+
+configure = admin/config/services/bbitautotweet
