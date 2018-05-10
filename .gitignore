@@ -15,4 +15,4 @@ error_log/*
 default.htm
 
 /*txt
-
+error_log/
