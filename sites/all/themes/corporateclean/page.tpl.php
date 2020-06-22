@@ -78,10 +78,12 @@
                 <div style="float:left; padding:0 30px 0 0;">
                 <img class="masked" src="<?php print base_path() . drupal_get_path('theme', 'corporateclean') ;?>/mockup/slide-1.jpg"/>
                 </div>
-                <h2>Welcome</h2>
+                <h2>Sample product name</h2>
+                <strong>General</strong><br/>
+                <em>Client name</em><br/>
                 <br/>
-                 The Tuscaloosa Area Black Chamber of Commerce, Inc. is here to Connect the Disconnected - One Business at a Time by providing a hands-on approach to service. We will walk you through the process of starting your business and ensure that you develop sound business practices that will make your business sustainable for years to come. 
-                <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="about-tabcc">Tell me more</a></div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="#">Tell me more</a></div>
                 <!--EOF:slider-item content-->
                 
                 </div>
@@ -98,10 +100,31 @@
                 <div style="float:right; padding:0 0 0 30px;">
                 <img class="masked" src="<?php print base_path() . drupal_get_path('theme', 'corporateclean') ;?>/mockup/slide-2.jpg"/>
                 </div>
-                <h2>Join Today!</h2>
+                <h2>Sample service name</h2>
+                <strong>General</strong><br/>
+                <em>Client name</em><br/>
                 <br/>
-                Our member benefits include referrals, exclusive deals with other member companies and businesses, and more! 
-                <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="membership/membership-application">Tell me more</a></div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="#">Tell me more</a></div>
+                <!--EOF:slider-item content-->
+                
+				</div>
+            </div>
+        </div>
+        <!--EOF:slider-item-->
+        
+        <!--slider-item-->
+        <div class="slider-item">
+            <div class="content container_12">
+            	<div class="grid_12">
+                
+                <!--slider-item content-->
+                <h2>Sample product name</h2>
+                <strong>General</strong><br/>
+                <em>Client name</em><br/>
+                <br/>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="#">Tell me more</a></div>
                 <!--EOF:slider-item content-->
                 
 				</div>
@@ -129,6 +152,7 @@
     <div id="slider-controls-wrapper">
         <div id="slider-controls" class="container_12">
             <ul id="slider-navigation">
+                <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>

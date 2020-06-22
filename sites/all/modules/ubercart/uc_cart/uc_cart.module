@@ -59,7 +59,7 @@ function uc_cart_menu() {
     'weight' => 2,
     'file' => 'uc_cart.admin.inc',
   );
-  $items += rules_ui()->config_menu('admin/store/settings/checkout/rules');
+  // $items += rules_ui()->config_menu('admin/store/settings/checkout/rules');
 
   $items['cart'] = array(
     'title' => 'Shopping cart',
