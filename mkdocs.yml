@@ -1,9 +1,9 @@
 site_name: Tuscaloosa Area Black Chamber of Commerce
+# site_nav_name: TABCC
 site_description: Connecting the disconnected.
 site_url: http://www.tuscblackchamber.org
-copyright: Copyright 2020, Tuscaloosa Area Black Chamber of Commerce
-
-site_favicon: images/lightbulb/favicon.ico
+site_author: Tuscaloosa Area Black Chamber of Commerce
+copyright: Tuscaloosa Area Black Chamber of Commerce 2011
 
 # repository information
 repo_url: https://github.com/almostengr/tabcc
@@ -14,27 +14,81 @@ remote_branch: website
 # Development server details
 dev_addr: 192.168.57.117:8080
   
-extra_css: [css/extra.css]
-
 # Appearance
 theme:
-  name: material
+  name: null
+  custom_dir: tabcctheme
+  # name: material
   # custom_dir: 'readthedocs'
-  highlightjs: false
+  # highlightjs: false
   language: en
   static_templates:
     - 404.html
     - 500.html
-  include_search_page: true
-  search_index_only: false
-  highlightjs: false
-  hljs_languages: []
-  include_homepage_in_sidebar: true
-  prev_next_buttons_location: bottom
-  navigation_depth: 4
-  titles_only: false
-  sticky_navigation: true
-  collapse_navigation: true
+  # include_search_page: true
+  # search_index_only: false
+  # highlightjs: false
+  # hljs_languages: []
+  # include_homepage_in_sidebar: true
+  # prev_next_buttons_location: bottom
+  # navigation_depth: 4
+  # titles_only: false
+  # sticky_navigation: true
+  # collapse_navigation: true
+  maintainer:
+    name: Almost Engineer Services
+    url: https://thealmostengineer.com
+
+  mainnav:
+    - name: Home
+      url: /
+    - name: About
+      url: /about
+    - name: Membership
+      url: /membership
+    - name: Resources
+      url: /resources
+    - name: Contact
+      url: /contact
+
+  footerblocks:
+    - title: Attention Business Owners!
+      body: Do you currently have a business or are planning on establishing your business in the Tuscaloosa, Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing programs and new initiatives that will help TABCC businesses move forward.
+      linkurl: /membership
+      linktext: "Join today"
+
+  sociallinks:
+    - name: Facebook
+      link: "https://www.facebook.com/tuscblackcc"
+      icon: fab fa-facebook
+    - name: Twitter
+      link: "https://twitter.com/tuscblackcc"
+      icon: fab fa-twitter
+
+  contactlinks:
+    - name: Contact
+      link: /contact
+      icon: fas fa-id-card-alt
+    - name: 205-614-8585
+      link: tel:205-614-8585
+      icon: fas fa-phone
+    - url:  /photos
+      name: Photos
+      icon: fas fa-photo-video
+
+  affiliatelinks:
+    - name: Alabama State Black<br />Chamber of Commerce
+      link: "http://www.alblackcc.org/"
+    - name: Birmingham Metro Black<br />Chamber of Commerce
+      link: "https://www.birminghammetrobcc.com/"
+    - name: Mobile Area Black<br />Chamber of Commerce
+      link: "https://mabcc.org/"
+    - name: Northeast Alabama Black<br />Chamber of Commerce 
+      link: "#"
+    - name: North Alabama African American<br />Chamber of Commerce
+      link: "http://naaachamber.org"
+    - name: River Region Black<br />Chamber of Commerce
+      link: "#"
 
 use_directory_urls: true
 strict: false

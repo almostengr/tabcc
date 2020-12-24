@@ -1,0 +1,78 @@
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --yellow: #ffff00;
+    --tabcc-yellow: #e8e829;
+    --dark-yellow: #6a6101;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.bg-black {
+    background-color: var(--black);
+}
+
+.bg-yellow {
+    background-color: var(--yellow);
+}
+
+.bg-dark-yellow {
+    background-color: var(--dark-yellow);
+}
+
+.bg-tabcc-yellow {
+    background-color: var(--tabcc-yellow);
+}
+
+a.navbar-brand {
+    font-weight: bold;
+}
+
+main a {
+    color: var(--black);
+}
+
+footer a, footer a:hover {
+    color: var(--yellow);
+    font-weight: 700;
+}
+
+h1 {
+    border-bottom: solid var(--dark-yellow) 5px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.text-small {
+    font-size: small;
+}
+
+.text-yellow {
+    color: var(--yellow) !important;
+}
+
+.navbar-toggler-icon {
+    color: black;
+}
+
+.text-black {
+    color: var(--black) !important;
+}
+
+.text-underline
+{
+    /* text-decoration: underline !important; */
+}
