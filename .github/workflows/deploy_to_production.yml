@@ -32,16 +32,16 @@ jobs:
     - name: Deploy to website branch
       run:  /usr/bin/python3 -m mkdocs gh-deploy -b website
 
-  deploy:
-    runs-on: ubuntu-18.04
-    needs: build
+  # deploy:
+  #   runs-on: ubuntu-18.04
+  #   needs: build
 
-    steps:
-    - name: Deploy to Production
-      uses: fifsky/ssh-action@master
-      with:
-        command: cd && cd www && git pull origin website
-        host: ${{ secrets.HOSTNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        port: ${{ secrets.PORT_NUMBER }}
-        user: ${{ secrets.USERNAME }}
+  #   steps:
+  #   - name: Deploy to Production
+  #     uses: fifsky/ssh-action@master
+  #     with:
+  #       command: cd && cd www && git pull origin website
+  #       host: ${{ secrets.HOSTNAME }}
+  #       key: ${{ secrets.PRIVATE_KEY }}
+  #       port: ${{ secrets.PORT_NUMBER }}
+  #       user: ${{ secrets.USERNAME }}
