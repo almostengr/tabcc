@@ -17,7 +17,7 @@ dev_addr: 192.168.57.117:8080
 # Appearance
 theme:
   name: null
-  custom_dir: tabcctheme
+  custom_dir: theme
   # name: material
   # custom_dir: 'readthedocs'
   # highlightjs: false
