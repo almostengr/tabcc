@@ -3,16 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="{{ config.site_name }}">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="{{ config.site_name }}" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="{{ config.theme.social_user }}" />
-  <meta name="twitter:creator" content="{{ config.theme.social_user }}" />
 
-  {% if page.meta.description %}
+  {% if page and page.meta.description %}
   <meta name="description" content="{{ page.meta.description }}">
   <meta property="og:description" content="{{ page.meta.description }}" />
   <meta name="twitter:description" content="{{ page.meta.description }}" />
@@ -22,13 +18,13 @@
   <meta name="twitter:description" content="{{ config.site_description }}" />
   {% endif %}
 
-  {% if page.meta.author %}
+  {% if page and page.meta.author %}
   <meta name="author" content="{{ page.meta.author }}">
   {% else %}
   <meta name="author" content="{{ config.site_author }}">
   {% endif %}
 
-  {% if page.meta.title %}
+  {% if page and page.meta.title %}
   <title>{{ page.meta.title | striptags }} | {{ config.site_name }}</title>
   <meta property="og:title" content="{{ page.meta.title }}" />
   <meta name="twitter:title" content="{{ page.meta.title }}" />
@@ -42,16 +38,16 @@
   <meta name="twitter:title" content="{{ config.site_name }}" />
   {% endif %}
 
-  {% if page.meta.image %}
+  {% if page and page.meta.image %}
   <meta property="og:image" content="{{ page.meta.image | url }}" />
   <meta name="twitter:image" content="{{ page.meta.image | url }}" />
   {% endif %}
 
-  {% if page.meta.keywords %}
+  {% if page and page.meta.keywords %}
   <meta name="keywords" content="{{ page.meta.keywords }}" />
   {% endif %}
 
-  {% if page.meta.ogtype %}
+  {% if page and page.meta.ogtype %}
   <meta property="og:type" content="{{ page.meta.ogtype }}" />
   {% elif 'blog' in page.url %}
   <meta property="og:type" content="article" />
@@ -59,232 +55,241 @@
   <meta property="og:type" content="website" />
   {% endif %}
 
-  {% if page.meta.robots %}
+  {% if page and page.meta.robots %}
   <meta name="robots" content="{{ page.meta.robots }}" />
   {% else %}
   <meta name="robots" content="index, follow" />
   {% endif %}
 
-  {% if page.canonical_url %}
+  {% if page and page.canonical_url %}
   <link rel="canonical" href="{{ page.canonical_url | url }}">
   <meta property="og:url" content="{{ page.canonical_url | url }}" />
   <meta property="twitter:url" content="{{ page.canonical_url | url }}" />
   {% endif %}
 
-  <script async src="https://kit.fontawesome.com/a076d05399.js"></script>
-  {% if page.meta.captcha == "yes" %}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TEYPEZ2YY"></script>
+  <script async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-1TEYPEZ2YY');
+  </script>
+
+  {% if page.url == "request/" %}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {% endif %}
 
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/jumbotron.min.css" rel="stylesheet">
-  <link href="/css/tabcctheme.min.css" rel="stylesheet">
+
+  {% if config.theme.site_icon %}
+  <link rel="shortcut icon" href="{{ config.theme.site_icon | url }}">
+  {% endif %}
+
+  <!-- Custom styles for this template -->
+  <link href="/css/style.min.css" rel="stylesheet">
+
+  {% for stylesheet in config.theme.extracss %}
+  <link href="{{ stylesheet }}" rel="stylesheet">
+  {% endfor %}
 </head>
 
 <body class="bg-black">
-  <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-yellow text-dark"> -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black text-yellow">
-    <!-- <a class="navbar-brand" href="/">{{ config.site_nav_name }}</a> -->
-    <a class="text-yellow navbar-brand" href="/">{{ config.site_name }}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top {{ config.theme.mainnav.bgcolor }}">
+    <a class="navbar-brand" href="/">{{ config.site_name_short }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav ml-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        {% for link in config.theme.mainnav.links %}
+        {% if link.button == false %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link {{ config.theme.mainnav.linkcolor }}" href="{{ link.url | url }}">{{ link.name }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li> -->
-        {% for nav_item in config.theme.mainnav %}
-        <li class="nav-item">
-          <a class="nav-link text-yellow text-uppercase" href="{{ nav_item.url | url }}">{{ nav_item.name }}</a>
-        </li>
+        {% endif %}
         {% endfor %}
       </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+      {% for link in config.theme.mainnav.links %}
+      {% if link.button == true %}
+      <form class="form-inline mt-2 mt-md-0 mr-1" action="{{ link.url }}" method="GET">
+        <button class="btn {{ config.theme.mainnav.buttoncolor }} my-2 my-sm-0" type="submit">{{ link.name }}</button>
+      </form>
+      {% endif %}
+      {% endfor %}
     </div>
   </nav>
 
-  <main role="main" class="bg-white">
+  <main role="main" class="{{ config.theme.main.bgcolor }}">
+
+    {% for message in config.theme.sitemessage %}
+    <section class="{{ message.bgcolor }} {{ message.textcolor }} py-4 sitemessage">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 pb-2 pl-4">
+            <h4>{{ message.heading }}</h4>
+            <p>{{ message.detail }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
 
     {% if page and page.is_homepage %}
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+
+    {% for message in config.theme.homemessage %}
+    <section class="{{ message.bgcolor }} {{ message.textcolor }} py-4 homemessage">
       <div class="container">
-        <h1 class="display-3">Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-          jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+        <div class="row">
+          <div class="col-sm-12 pb-2 pl-4">
+            <h4>{{ message.heading }}</h4>
+            <p>{{ message.detail }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+
+    {% for jt in config.theme.jumbotron %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron {{ jt.textcolor }}" style="background-image: url({{ jt.background_image }});">
+      <div class="container">
+        <h1 class="display-3">{{ jt.heading }}</h1>
+
+        {% if jt.detail %}
+        <p>{{ jt.detail }}</p>
+        {% endif %}
+
+        {% if jt.buttontext %}
+        <p>
+          <a class="btn {{ jt.buttoncolor }} btn-lg" href="{{ jt.url | url }}" role="button">{{ jt.buttontext }}</a>
         </p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        {% endif %}
       </div>
     </div>
-    {% else %}
-    <div class="p-3"></div>
+    {% endfor %}
+
+    {% for feature in config.theme.featurette %}
+    <div class="{{ feature.bgcolor }} {{ feature.textcolor }} featurette">
+      <div class="container">
+        <div class="row py-4">
+          <div class="col-sm-12 col-md-6 text-center">
+            <h2 class="featurette-heading text-center">{{ feature.heading }}</h2>
+            {% if feature.description %}
+            <p class="lead">{{ feature.description }}</p>
+            {% endif %}
+            {% if feature.buttontext %}
+            <p><a class="btn btn-dark-gray" href="{{ feature.buttonlink | url }}">{{ feature.buttontext }}</a></p>
+            {% endif %}
+          </div>
+          <div class="col-md-6 text-center">
+            <img src="{{ feature.imageurl | url }}" alt="{{ feature.heading }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    {% elif page and page.meta.title %}
+    <div class="container pt-3">
+      <h1 class="pt-3">{{ page.meta.title }}</h1>
+    </div>
     {% endif %}
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
+    <div class="bg-success text-light container py-2 d-none" id="successmessage">
+      Your request has been submitted successfully!
+    </div>
 
-        {% if page and page.is_homepage %}
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
-            felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-            massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
+    <div class="bg-danger text-light container py-2 d-none" id="failuremessage">
+      An error occurred when attempting to process your request.
+    </div>
 
-        {% else %}
-        <div class="col-sm-12">
-
-          {% if page.meta.title %}
-          <h1>{{ page.meta.title | striptags }}</h1>
-          {% endif %}
-
-          {{ page.content }}
-
-          {% if page.url == "contact/" %}
-          <form method="POST" action="/submit.php">
-            <p>
-              <label for="requestorname" class="font-weight-bold required">Name</label><br />
-              <input class="form-control" name="requestorname" type="text" placeholder="John Doe" required="required"
-                minlength="4" />
-            </p>
-            <p>
-              <label for="emailaddress" class="font-weight-bold required">Email Address</label><br />
-              <input class="form-control" name="emailaddress" type="email" placeholder="user@nsbe-mp.org"
-                required="required" minlength="5" />
-            </p>
-            <p>
-              <label for="calltyrone" class="font-weight-bold required">Phone Number</label><br />
-              <input name="calltyrone" type="tel" class="form-control" placeholder="555-555-5555" minlength="12" />
-            </p>
-            <p>
-              <label for="message" class="font-weight-bold required">Message, Comment or Question</label><br />
-              <textarea class="form-control" name="message" required="required" rows="5"
-                placeholder="I have a question about TABCC or its services"></textarea>
-            </p>
-            <p>
-              <input type="submit" name="submit" value="Submit" class="btn btn-dark" />
-            </p>
-          </form>
-          {% endif %}
-        </div>
-        {% endif %}
-      </div> <!-- /row -->
-      <hr>
-    </div> <!-- /container -->
+    <div class="container py-2" id="pagebody">
+      {%- block content %}
+      {{ page.content }}
+      {%- endblock %}
+    </div>
   </main>
 
-  <footer class="container text-center text-secondary">
-    <div class="container row mx-auto">
-      {% for block in config.theme.footerblocks %}
-      <div class="card bg-black subfooter col-md-4 col-sm-12">
-        <div class="card-body text-yellow">
-          <h5 class="card-title p-2 subfooter font-weight-bold">{{ block.title }}</h5>
-          <p class="card-text subfooter">{{ block.body }}</p>
-          {% if block.linkurl and block.linktext %}
-          <a href="{{ block.linkurl | url }}" class="btn btn-footer btn-dark text-yellow">{{ block.linktext }}</a>
-          {% endif %}
+  {% for promo in config.theme.promotions %}
+  <section class="{{ promo.bgcolor }} {{ promo.textcolor }} py-4 promotions">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 pb-2 text-center">
+          <h4>{{ promo.heading }}</h4>
+          <p>{{ promo.detail }}</p>
         </div>
-      </div>
-      {% endfor %}
-
-      <div class="card bg-black subfooter col-md-4 col-sm-12">
-        <div class="card-body text-yellow">
-          <h5 class="card-title p-2 subfooter font-weight-bold">Chamber Affiliates</h5>
-          <ul class="list-unstyled text-left footer">
-            {% for link in config.theme.affiliatelinks %}
-            <li class="nav-item mb-2">
-              <a class="text-underline" href="{{ link.link | url }}" target="_blank">{{ link.name }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-
-      <div class="card bg-black subfooter col-md-4 col-sm-12">
-        <div class="card-body text-yellow">
-          <h5 class="card-title p-2 subfooter font-weight-bold">Resources</h5>
-          <ul class="list-unstyled text-left footer">
-            {% for link in config.theme.contactlinks %}
-            <li class="nav-item">
-              <a class="text-black" href="{{ link.link | url }}" target="_blank">
-                {% if link.icon %}
-                <i class="{{ link.icon }}"></i>
-                {% endif %}
-                {{ link.name | striptags }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-          <ul class="list-unstyled text-left footer">
-            {% for link in config.theme.sociallinks %}
-            <li class="nav-item">
-              <a class="text-black" href="{{ link.link | url }}" target="_blank">
-                {% if link.icon %}
-                <i class="{{ link.icon }}"></i>
-                {% endif %}
-                {{ link.name | striptags }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
+        <div class="col-sm-12 col-md-6 pb-2 text-center">
+          <form method="GET" action="{{ promo.buttonurl }}">
+            <input type="submit" class="btn btn-lg {{ promo.buttoncolor }}" value="{{ promo.buttontext }}">
+          </form>
         </div>
       </div>
     </div>
+  </section>
+  {% endfor %}
 
-    <hr class="bg-yellow" />
+  {% for section in config.theme.subfooter %}
+  <section class="{{ section.bgcolor }} {{ section.textcolor }} subfooter">
+    <div class="container text-center py-3">
+      <div class="row">
+        {% for column in section.columns %}
+        <div class="col-sm-12 col-md-4">
+          <h4 class="subfooterheader {{ section.headercolor }}">{{ column.heading }}</h4>
+          {% for item in column.links %}
+          <p>
+            {% if item.icon %}
+            <i class="{{ item.icon }}"></i>
+            {% endif %}
+            {% if item.url %}
+            <a href="{{ item.url | url }}" class="{{ section.textcolor }}">
+              {{ item.name}}</a>
+            {% else %}
+            {{ item.name }}
+            {% endif %}
+          </p>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endfor %}
 
-    <p class="footer">Copyright &copy; {{ config.copyright }}-{{ build_date_utc.strftime('%Y') }}</p>
-    <p>Website maintained by <a href="{{ config.theme.maintainer.url | url }}"
-        target="_blank">{{ config.theme.maintainer.name }}</a></p>
-    <p class="footer text-small">
-      Cookies are used on this website to track your visits, provide advertisements specific
-      to you, and preferences by a third-party.
-      By continuing to use this site, you agree to the use of cookies unless you have disabled them.
-    </p>
+  {% for section in config.theme.footer %}
+  <footer class="{{ section.bgcolor }} {{ section.textcolor }}">
+    <div class="container text-center py-3">
+      <div class="col-sm-12">
+        &copy; Copyright {{ build_date_utc.strftime("%Y") }} {{ config.copyright }}
+        {% for link in section.links %}
+        | <a href="{{ link.url | url }}">{{ link.name }}</a>
+        {% endfor %}
+        <br />
+        Website developed by <a href="#" target='_blank'>Robinson Handy and Technology Services LLC</a>
+      </div>
+      <div class="col-sm-12 pt-2">
+        Cookies are used on this website to track your visits, provide advertisements specific to you, and preferences
+        by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
+        More information this is available in the Privacy Policy.
+      </div>
+      <!-- Last updated: {{ build_date_utc }} -->
+    </div>
   </footer>
+  {% endfor %}
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="/js/jquery.slim.min.js"><\/script>')</script>
-  <script src="/js/bootstrap.bundle.min.js"></script>
+  <!-- <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script> -->
+  <script async src="/js/bootstrap.bundle.min.js"></script>
+  <script async src="https://kit.fontawesome.com/a076d05399.js"></script>
+  {% for scriptfile in config.theme.extrajs %}
+  <script async src="{{ scriptfile }}"></script>
+  {% endfor %}
+  <script async src="/js/javascript.min.js"></script>
 </body>
 
 </html>

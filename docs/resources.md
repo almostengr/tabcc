@@ -1,4 +1,10 @@
-# Resources
+---
+title: Resources
+---
+
+<div class="text-center pb-3">
+<img src="/images/headerlogo.jpg" alt="TABCC logo and motto - TABCC, Connecting the Disconnected" >
+</div>
 
 <a href="https://loans.usnews.com/small-business" target="_blank">Best Small Business Loans</a>
 
