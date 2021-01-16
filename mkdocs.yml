@@ -2,8 +2,8 @@ site_name: Tuscaloosa Area Black Chamber of Commerce
 site_name_short: '<img src="/images/SmallLogo250x151.png" style="height: auto; width: 50px;" alt="TABCC Home">'
 site_description: Connecting the disconnected.
 site_url: http://www.tuscblackchamber.org
-site_author: Tuscaloosa Area Black Chamber of Commerce
-copyright: Tuscaloosa Area Black Chamber of Commerce
+site_author: Tuscaloosa Area Black Chamber of Commerce (TABCC)
+copyright: Tuscaloosa Area Black Chamber of Commerce (TABCC)
 
 # repository information
 repo_url: https://github.com/almostengr/tabcc
@@ -19,9 +19,10 @@ theme:
   name: null
   custom_dir: 'theme'
   language: en
+  # google_tag: 
   site_icon: "/images/SmallLogo250x151.png"
   main:
-      bgcolor: bg-white
+    bgcolor: bg-white
   static_templates:
     - 404.html
     - 500.html
@@ -38,10 +39,10 @@ theme:
   #     bgcolor: bg-primary
   #     textcolor: text-light
   jumbotron:
-    - heading: SUPPORTING BUSINESSES IN WEST ALABAMA
+    - heading: PROVIDING BUSINESS SUPPORT IN WEST ALABAMA
       detail: Need help starting a business? We help businesses get started and improve the community
       url: #
-      background_image: "/images/jumbotron.jpg"
+      background_image: "/images/blogpost-1.jpg"
       textcolor: text-white
       buttoncolor: btn-white
   mainnav:
@@ -50,19 +51,19 @@ theme:
     buttoncolor: btn-yellow
     links:
     - url: /about
-      name: About
+      name: ABOUT
       button: false
     - url: /membership
-      name: Membership
+      name: MEMBERSHIP
       button: false
     - url: /resources
-      name: Resources
+      name: RESOURCES
       button: false
     - url: https://www.facebook.com/pg/tuscblackcc/events/
-      name: Events
+      name: EVENTS
       button: false
     - url: /contact
-      name: Contact
+      name: CONTACTS
       button: false
   featurette:
     # - heading: heading

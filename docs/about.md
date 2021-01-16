@@ -101,7 +101,7 @@ If you do not see your city or county listed, you are still welcome to join the 
 
 ## Chamber Affiliation
 
-TABCC is one of several chambers that are apart of the 
+TABCC is one of several Black chambers of commerce that are apart of the 
 [Alabama State Black Chamber of Commerce](https://asbcc.org).
 
 [ASBCC Organization Chart](/files/ASBCC Organizational Chart.pdf)

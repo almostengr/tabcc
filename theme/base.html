@@ -67,15 +67,17 @@
   <meta property="twitter:url" content="{{ page.canonical_url | url }}" />
   {% endif %}
 
+  {% if config.theme.google_tag %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TEYPEZ2YY"></script>
   <script async>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-1TEYPEZ2YY');
+    gtag('config', '{{ config.theme.google_tag }}');
   </script>
-
+  {% endif %}
+  
   {% if page.url == "request/" %}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {% endif %}
@@ -268,7 +270,7 @@
         | <a href="{{ link.url | url }}">{{ link.name }}</a>
         {% endfor %}
         <br />
-        Website developed by <a href="#" target='_blank'>Robinson Handy and Technology Services LLC</a>
+        Website developed by <a href="https://rhtservices.net" target='_blank'>Robinson Handy and Technology Services LLC</a>
       </div>
       <div class="col-sm-12 pt-2">
         Cookies are used on this website to track your visits, provide advertisements specific to you, and preferences

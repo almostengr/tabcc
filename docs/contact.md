@@ -23,15 +23,15 @@ Tuscaloosa, AL 35401
 
 Please allow up to 72 business hours to get back to you.
 
-<form method="POST" action="submit.php">
+<form method="POST" action="submission.php" id="contactform">
 <p>
     <label for="customerfirst" class="required">First Name</label>
-    <input class="form-control" name="customerfirst" type="text" placeholder="First Name" minlength="5"
+    <input class="form-control" name="customerfirst" type="text" placeholder="First Name" minlength="3"
         required="required">
 </p>
 <p>
     <label for="customerlast" class="required">Last Name</label>
-    <input class="form-control" name="customerlast" type="text" placeholder="Last Name" minlength="5"
+    <input class="form-control" name="customerlast" type="text" placeholder="Last Name" minlength="3"
         required="required">
 </p>
 <p>
@@ -43,13 +43,13 @@ Please allow up to 72 business hours to get back to you.
     <label for="phonenumber" class="required">Phone Number</label>
     <input class="form-control" type="tel" placeholder="Phone Number" minlength="10" name="phonenumber"
         maxlength="12" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-    <div class="text-small text-muted font-italic">Enter number in 555-555-5555 format.</div>
+    <div class="text-muted font-italic">Enter number in 555-555-5555 format.</div>
 </p>
 <p>
-    <label for="jobdescription" class="required">Your Comment or Question</label>
-    <textarea class="form-control" rows="4" id="jobdescription" placeholder="How can we help you?"
-        name="jobdescription" minlength="100"></textarea>
-    <div class="text-small text-muted font-italic">Minimum 100 characters. The more details, the better</div>
+    <label for="crepsonse" class="required">Your Comment or Question</label>
+    <textarea class="form-control" rows="4" id="crepsonse" placeholder="How can we help you?"
+        name="crepsonse" minlength="100"></textarea>
+    <div class="text-muted font-italic">Minimum 100 characters. The more details, the better</div>
 </p>
 <p>
     <input type="submit" class="form-control btn btn-dark-gray" value="Submit">
