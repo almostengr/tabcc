@@ -14,7 +14,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     $message = print_r($_POST, true);
     $message .= "Submitted " . $current_time . $new_line;
     $message .= "IP Address " . $_SERVER['REMOTE_ADDR'];
-    $subject = "Request " . $current_time;
+    $subject = "Website Submission at " . $current_time;
     $headers = array('From' => $_POST['emailaddress']);
 
     if ($_POST['emailaddress'] == "tester@tuscblackchamber.org") {
@@ -24,7 +24,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     }
 
     if ($mail_result) {
-?>
+    ?>
         <div class="bg-success text-light container py-2 my-5" id="successmessage">
             Your request has been submitted successfully!
         </div>
