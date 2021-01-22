@@ -149,7 +149,7 @@ theme:
         - url: /
           name: tuscblackchamber.org
           icon: fas fa-globe-africa
-        - url: /privacy-policy
+        - url: /privacy
           name: Privacy Policy
           icon: fas fa-user-shield
   footer:
