@@ -6,7 +6,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/../phpenv.php");
 {% block content %}
 
 <h1 id="contact">Contact</h1>
-
 <?php
 if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     date_default_timezone_set('America/Chicago');
@@ -74,8 +73,8 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
             <div class="text-muted font-italic">Enter number in 555-555-5555 format.</div>
         </p>
         <p>
-            <label for="crepsonse" class="required">Your Comment or Question</label>
-            <textarea class="form-control" rows="4" id="crepsonse" placeholder="How can we help you?" name="crepsonse" minlength="100"></textarea>
+            <label for="cresponse" class="required">Your Comment or Question</label>
+            <textarea class="form-control" rows="4" id="cresponse" placeholder="How can we help you?" name="cresponse" minlength="100"></textarea>
             <div class="text-muted font-italic">Minimum 100 characters. The more details, the better</div>
         </p>
         <p>

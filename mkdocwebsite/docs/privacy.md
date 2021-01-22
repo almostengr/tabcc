@@ -25,6 +25,7 @@ offered by Tuscaloosa Area Black Chamber of Commerce. Personally identifiable in
 disclosed to third-parties without your prior consent.
 
 ## How do we protect your information?
+
 Your information is only accessible by Tuscaloosa Area Black Chamber of Commerce staff and individuals who 
 are authorized to support our operations. Technological security measures have been put in place 
 including firewalls, password-restricted access, and continuous updates, that protect from 

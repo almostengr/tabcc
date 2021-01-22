@@ -26,6 +26,7 @@ theme:
   static_templates:
     - 404.html
     - 500.html
+    - contact.php
   # extracss: []
   # extrajs: []
   # sitemessage:
@@ -62,7 +63,7 @@ theme:
     - url: https://www.facebook.com/pg/tuscblackcc/events/
       name: EVENTS
       button: false
-    - url: /contact
+    - url: /contact.php
       name: CONTACTS
       button: false
   featurette:
