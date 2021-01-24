@@ -140,7 +140,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     $message .= "Submitted " . $current_time . $new_line;
     $message .= "IP Address " . $_SERVER['REMOTE_ADDR'];
     $subject = "Website Submission at " . $current_time;
-    $headers = array('From' => $_POST['emailaddress']);
+    $headers = implode("", array('From' => $_POST['emailaddress']));
 
     if ($_POST['emailaddress'] == "tester@tuscblackchamber.org") {
         $mail_result = true;
@@ -373,7 +373,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-01-24 02:55:01.073253+00:00 -->
+      <!-- Last updated: 2021-01-24 03:04:29.964410+00:00 -->
     </div>
   </footer>
   
