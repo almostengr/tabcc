@@ -94,13 +94,6 @@ theme:
       bgcolor: bg-white
       textcolor: text-black
       buttontext: Find A Location
-    - heading: TABCC Women Entrepreneurship Day Afternoon Tea
-      description: A Panel Discussion to Empower, Celebrate, and Support. Women Entrepreneurs in Our Community
-      imageurl: /images/wed201611_2.jpg
-      bgcolor: bg-yellow
-      textcolor: text-black
-      buttonlink: https://www.facebook.com/pg/tuscblackcc/photos/?tab=album&album_id=1257719684287342
-      buttontext: See Event Photos
   # promotions:
   #   - heading: Attention Business Owners!
   #     detail: Do you currently have a business or are planning on establishing your business in the Tuscaloosa, Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing programs and new initiatives that will help TABCC businesses move forward.
