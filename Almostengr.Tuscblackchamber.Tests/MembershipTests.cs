@@ -13,7 +13,7 @@ namespace Almostengr.Tuscblackchamber.Tests
             driver = StartBrowser();
         }
 
-        [Test]
+        // [Test]
         public void ViewMembershipPage()
         {
             GoHome(driver);
