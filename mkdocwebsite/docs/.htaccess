@@ -1,6 +1,4 @@
-#
 # Apache/PHP/Drupal settings:
-#
 
 # Protect files and directories from prying eyes.
 <FilesMatch "\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\.(?!well-known).*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock))$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig\.save)$">
@@ -19,7 +17,8 @@ Options -Indexes
 Options +FollowSymLinks
 
 # Make Drupal handle any 404 errors.
-ErrorDocument 404 /index.php
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
 
 # Set the default handler.
 DirectoryIndex index.php index.html index.htm
