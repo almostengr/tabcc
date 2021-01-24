@@ -30,7 +30,7 @@ jobs:
     - run: git fetch -p
 
     - name: Deploy to website branch
-      run:  /usr/bin/python3 -m mkdocs gh-deploy -b website
+      run:  /usr/bin/python3 -m mkdocs gh-deploy -f mkdocwebsite/mkdocs.yml -b website
 
   # deploy:
   #   runs-on: ubuntu-latest
@@ -57,6 +57,4 @@ jobs:
   #   with:
   #     dotnet-version: '3.1.x' # SDK Version to use; x will use the latest version of the 3.1 channel
   
-  # - run: cd swshakeout
-
-  # - run: dotnet test -c RELEASE swshakeout
+  # - run: dotnet test -c RELEASE Almostengr.Tuscblackchamber.Tests
