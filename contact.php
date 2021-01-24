@@ -373,7 +373,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-01-24 02:45:15.418078+00:00 -->
+      <!-- Last updated: 2021-01-24 02:45:24.388869+00:00 -->
     </div>
   </footer>
   
