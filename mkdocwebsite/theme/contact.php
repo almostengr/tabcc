@@ -54,7 +54,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     <p><a href="tel:2056148585">205-614-8585</a></p>
     <h2>Email</h2>
     <p>Please allow up to 72 business hours to get back to you.</p>
-    <form method="POST" action="submission.php" id="contactform">
+    <form method="POST" action="/contact.php" id="contactform">
         <p>
             <label for="customerfirst" class="required">First Name</label>
             <input class="form-control" name="customerfirst" type="text" placeholder="First Name" minlength="3" required="required">
