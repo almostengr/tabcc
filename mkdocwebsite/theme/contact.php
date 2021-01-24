@@ -15,7 +15,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     $message .= "Submitted " . $current_time . $new_line;
     $message .= "IP Address " . $_SERVER['REMOTE_ADDR'];
     $subject = "Website Submission at " . $current_time;
-    $headers = array('From' => $_POST['emailaddress']);
+    $headers = implode("", array('From' => $_POST['emailaddress']));
 
     if ($_POST['emailaddress'] == "tester@tuscblackchamber.org") {
         $mail_result = true;
