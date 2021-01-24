@@ -64,7 +64,7 @@ theme:
       name: EVENTS
       button: false
     - url: /contact.php
-      name: CONTACTS
+      name: CONTACT
       button: false
   featurette:
     # - heading: heading
@@ -139,7 +139,7 @@ theme:
       - heading: "Other Links"
         links:
         - name: Contact
-          url: /contact
+          url: /contact.php
           icon: fas fa-id-card-alt
         - name: 205-614-8585
           url: tel:205-614-8585

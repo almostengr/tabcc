@@ -12,7 +12,7 @@ namespace Almostengr.Tuscblackchamber.Tests
             ChromeOptions options = new ChromeOptions();
 
 #if RELEASE
-            options.AddArgument("--headless");
+            // options.AddArgument("--headless");
 #endif
 
             driver = new ChromeDriver(options);
