@@ -96,7 +96,7 @@ require($HOMEPATH);
         
         
         <li class="nav-item">
-          <a class="nav-link text-black" href="/contact.php">CONTACTS</a>
+          <a class="nav-link text-black" href="/contact.php">CONTACT</a>
         </li>
         
         
@@ -306,7 +306,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
             <i class="fas fa-id-card-alt"></i>
             
             
-            <a href="/contact" class="text-white">
+            <a href="/contact.php" class="text-white">
               Contact</a>
             
           </p>
@@ -373,7 +373,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-01-24 02:12:19.035917+00:00 -->
+      <!-- Last updated: 2021-01-24 02:45:15.418078+00:00 -->
     </div>
   </footer>
   
