@@ -1,10 +1,10 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . "/../phpenv.php");
+$HOMEPATH = str_replace("public_html", "", $_SERVER['DOCUMENT_ROOT']);
+$HOMEPATH .= "phpenv.php";
+require($HOMEPATH);
 ?>
 {% extends "base.html" %}
-
 {% block content %}
-
 <h1 id="contact">Contact</h1>
 <?php
 if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
