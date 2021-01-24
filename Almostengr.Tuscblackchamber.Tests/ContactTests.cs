@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -32,10 +34,18 @@ namespace Almostengr.Tuscblackchamber.Tests
 
             customerFirst.Submit();
 
-            driver.FindElement(By.Id("successmessage"));
+            // driver.FindElement(By.Id("successmessage"));
+
+            Thread.Sleep(TimeSpan.FromSeconds(10));
+
+            bool successMsg = driver.FindElement(By.Id("successmessage")).Displayed;
+            bool failMsg = driver.FindElement(By.Id("failuremessage")).Displayed;
 
             // assert
-            Assert.Pass();
+            // Assert.Pass();
+            Assert.IsTrue(successMsg);
+            Assert.IsFalse(failMsg);
+
         }
 
         [OneTimeTearDown]
