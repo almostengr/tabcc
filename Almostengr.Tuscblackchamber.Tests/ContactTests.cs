@@ -24,8 +24,9 @@ namespace Almostengr.Tuscblackchamber.Tests
             customerFirst.SendKeys("Tuscaloosa");
 
             driver.FindElement(By.Name("customerlast")).SendKeys("Tester");
+            driver.FindElement(By.Name("emailaddress")).SendKeys("tharam04@yahoo.com");
             driver.FindElement(By.Name("phonenumber")).SendKeys("205-555-1234");
-
+            
             string repsonseMsg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat nunc et turpis bibendum tempus. Aliquam finibus euismod aliquam. Morbi semper lectus a mauris commodo egestas sit amet nec risus.";
             driver.FindElement(By.Name("cresponse")).SendKeys(repsonseMsg);
 
