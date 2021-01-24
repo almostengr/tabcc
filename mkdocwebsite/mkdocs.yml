@@ -19,7 +19,7 @@ theme:
   name: null
   custom_dir: 'theme'
   language: en
-  # google_tag: 
+  # google_tag:
   site_icon: "/images/SmallLogo250x151.png"
   main:
     bgcolor: bg-white
@@ -67,12 +67,20 @@ theme:
       name: CONTACT
       button: false
   featurette:
-    # - heading: heading
-    #   description: Description
-    #   buttonlink: "https://www.nerdwallet.com/article/small-business/small-business-grants?fbclid=IwAR3vCubO6klmsQ3JLd-RmeTedBwyLTnyi_2NsKxT7_iovNU-NWkslrzMtIk"
-    #   imageurl: "#"
-    #   bgcolor: bg-light
-    #   textcolor: text-black
+    - heading: Paycheck Protection Program (PPP)
+      description: Certain eligible borrowers that previously received a PPP loan are eligible for a second loan with the same loan terms through the additional funding Congress passed. Borrowers can apply for a Second Draw PPP Loan until March 31, 2021.
+      bgcolor: bg-white
+      textcolor: text-black
+      imageurl: /images/paycheckprotection.jpg
+      buttontext: Read more about PPP
+      buttonlink: /resources
+    - heading: Small-Business Grants
+      description: There are a number of small business grants that are available to small businesses. Find out more about these grants and to see if you qualify.
+      buttonlink: /resources
+      buttontext: Find Out About Grants
+      bgcolor: bg-yellow
+      textcolor: text-black
+      imageurl: /images/one_dollar_bill.jpg # https://pixabay.com/photos/bank-notes-dollar-us-dollars-usd-941246/
     - heading: Serving Tuscaloosa and Surrounding Communities
       description: We provide business support, networking, and financial resources.
       imageurl: /images/serving_tuscaloosa.jpg
@@ -89,7 +97,6 @@ theme:
     - heading: Whataburger Joins TABCC
       description: Please help us congratulate Whataburger for joining TABCC as a corporate sponsor! You can visit their website at whataburger.com
       buttonlink: https://locations.whataburger.com/search.html?q=Tuscaloosa,%20AL,%20USA
-      # imageurl: /images/whataburger.jpg
       imageurl: /images/whataburger-logo-png-transparent.png
       bgcolor: bg-white
       textcolor: text-black
@@ -157,8 +164,6 @@ use_directory_urls: true
 strict: false
 
 plugins:
-  - search:
-      lang: en
   - minify:
       minify_html: true
 
