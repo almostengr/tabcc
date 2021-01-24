@@ -1,0 +1,173 @@
+site_name: Tuscaloosa Area Black Chamber of Commerce
+site_name_short: '<img src="/images/SmallLogo250x151.png" style="height: auto; width: 50px;" alt="TABCC Home">'
+site_description: Connecting the disconnected.
+site_url: http://www.tuscblackchamber.org
+site_author: Tuscaloosa Area Black Chamber of Commerce (TABCC)
+copyright: Tuscaloosa Area Black Chamber of Commerce (TABCC)
+
+# repository information
+repo_url: https://github.com/almostengr/tabcc
+repo_name: Github
+remote_name: origin
+remote_branch: website
+
+# Development server details
+dev_addr: 192.168.57.117:8080
+
+# Appearance
+theme:
+  name: null
+  custom_dir: 'theme'
+  language: en
+  # google_tag: 
+  site_icon: "/images/SmallLogo250x151.png"
+  main:
+    bgcolor: bg-white
+  static_templates:
+    - 404.html
+    - 500.html
+    - contact.php
+  # extracss: []
+  # extrajs: []
+  # sitemessage:
+  #   - heading: ""
+  #     detail: '<div class="text-center"><img src="/images/headerlogo.jpg" alt="TABCC logo and motto - TABCC, Connecting the Disconnected" ></div>'
+  #     bgcolor: bg-white
+  #     textcolor: text-black
+  # homemessage:
+  #   - heading: heading
+  #     detail: detail
+  #     bgcolor: bg-primary
+  #     textcolor: text-light
+  jumbotron:
+    - heading: PROVIDING BUSINESS SUPPORT IN WEST ALABAMA
+      detail: Need help starting a business? We help businesses get started and improve the community
+      url: #
+      background_image: "/images/blogpost-1.jpg"
+      textcolor: text-white
+      buttoncolor: btn-white
+  mainnav:
+    bgcolor: bg-yellow
+    linkcolor: text-black
+    buttoncolor: btn-yellow
+    links:
+    - url: /about
+      name: ABOUT
+      button: false
+    - url: /membership
+      name: MEMBERSHIP
+      button: false
+    - url: /resources
+      name: RESOURCES
+      button: false
+    - url: https://www.facebook.com/pg/tuscblackcc/events/
+      name: EVENTS
+      button: false
+    - url: /contact.php
+      name: CONTACTS
+      button: false
+  featurette:
+    # - heading: heading
+    #   description: Description
+    #   buttonlink: "https://www.nerdwallet.com/article/small-business/small-business-grants?fbclid=IwAR3vCubO6klmsQ3JLd-RmeTedBwyLTnyi_2NsKxT7_iovNU-NWkslrzMtIk"
+    #   imageurl: "#"
+    #   bgcolor: bg-light
+    #   textcolor: text-black
+    - heading: Serving Tuscaloosa and Surrounding Communities
+      description: We provide business support, networking, and financial resources.
+      imageurl: /images/serving_tuscaloosa.jpg
+      bgcolor: bg-white
+      textcolor: text-black
+      buttontext: Learn more about TABCC
+      buttonlink: /about
+    - heading: Attention Business Owners!
+      description: Do you currently have a business or are planning on establishing your business in the Tuscaloosa, Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing programs and new initiatives that will help TABCC businesses move forward.
+      imageurl: /images/womenentrepreneur.jpg
+      bgcolor: bg-yellow
+      textcolor: text-black
+      buttontext: Become A Member!
+    - heading: Whataburger Joins TABCC
+      description: Please help us congratulate Whataburger for joining TABCC as a corporate sponsor! You can visit their website at whataburger.com
+      buttonlink: https://locations.whataburger.com/search.html?q=Tuscaloosa,%20AL,%20USA
+      # imageurl: /images/whataburger.jpg
+      imageurl: /images/whataburger-logo-png-transparent.png
+      bgcolor: bg-white
+      textcolor: text-black
+      buttontext: Find A Location
+    - heading: TABCC Women Entrepreneurship Day Afternoon Tea
+      description: A Panel Discussion to Empower, Celebrate, and Support. Women Entrepreneurs in Our Community
+      imageurl: /images/wed201611_2.jpg
+      bgcolor: bg-yellow
+      textcolor: text-black
+      buttonlink: https://www.facebook.com/pg/tuscblackcc/photos/?tab=album&album_id=1257719684287342
+      buttontext: See Event Photos
+  # promotions:
+  #   - heading: Attention Business Owners!
+  #     detail: Do you currently have a business or are planning on establishing your business in the Tuscaloosa, Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing programs and new initiatives that will help TABCC businesses move forward.
+  #     buttoncolor: btn-dark-gray
+  #     buttontext: Join Today!
+  #     buttonlink: /membership
+  #     bgcolor: bg-yellow
+  #     textcolor: text-black
+  subfooter:
+    - bgcolor: bg-dark
+      textcolor: text-white
+      headercolor: text-yellow
+      columns:
+      - heading: Connect With TABCC!
+        links:
+        - name: Facebook
+          url: "https://www.facebook.com/tuscblackcc"
+          icon: fab fa-facebook
+        - name: Twitter
+          url: "https://twitter.com/tuscblackcc"
+          icon: fab fa-twitter
+      - heading: Affiliate Links
+        links:
+        - name: Alabama State Black<br />Chamber of Commerce
+          url: "http://www.alblackcc.org/"
+        - name: Birmingham Metro Black<br />Chamber of Commerce
+          url: "https://www.birminghammetrobcc.com/"
+        - name: Mobile Area Black<br />Chamber of Commerce
+          url: "https://mabcc.org/"
+        - name: Northeast Alabama Black<br />Chamber of Commerce
+          url: "#"
+        - name: North Alabama African American<br />Chamber of Commerce
+          url: "http://naaachamber.org"
+        - name: River Region Black<br />Chamber of Commerce
+          url: "#"
+      - heading: "Other Links"
+        links:
+        - name: Contact
+          url: /contact
+          icon: fas fa-id-card-alt
+        - name: 205-614-8585
+          url: tel:205-614-8585
+          icon: fas fa-phone
+        - url:  /photos
+          name: Photos
+          icon: fas fa-photo-video
+        - url: /
+          name: tuscblackchamber.org
+          icon: fas fa-globe-africa
+        - url: /privacy
+          name: Privacy Policy
+          icon: fas fa-user-shield
+  footer:
+    - bgcolor: bg-black
+      textcolor: text-yellow
+      # links:
+      # - url: "linkurl"
+      #   name: "linkname"
+
+use_directory_urls: true
+strict: false
+
+plugins:
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
+
+extra:
+  generator: false
