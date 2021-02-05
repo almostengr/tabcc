@@ -40,3 +40,34 @@ Loan until March 31, 2021.
 <a href="https://creditcards.usnews.com/business#benefits-business-credit-cards" target="_blank">Benefits of Business Credit Cards</a>
 
 [Starting A Business by Atlas Alabama](https://atlasalabama.gov/plan/)
+
+## IRS Resources
+
+Below are resources provided by the IRS (Internal Revenue Service) for businesses. Some of these resources 
+include those that are specific to the COVID-19 Pandemic. 
+
+![Families that qualify for the Earned Income Tax Credit also qualify for free tax help by IRS-trained volunteers](/files/EITCvita2021.jpg)
+
+Claiming the Earned Income Tax Credit? Get the EITC and all the IRS tax credits you deserve without spending a cent. 
+Find a free tax prep site near you: <a href="https://www.irs.gov/vita" target="_blank">www.irs.gov/vita</a> 
+Unemployment compensation must be reported on your #IRS tax return. Learn more at 
+<a href="https://www.irs.gov/uc" target="_blank">www.irs.gov/uc</a>
+
+![IRS urges taxpayers and tax pros to avoid processing delays by filing electronically](/files/EFile2021.jpg)
+If you still file a paper tax return, there is no better time to switch to e-file. Avoid unnecessary paper processing delays in 2021: 
+<a href="https://www.irs.gov/efile" target="_blank">www.irs.gov/efile</a>
+
+Many pages on IRS.gov are available in 7 different languages. Some products are translated into more than 30.
+Get A Closer Look at the IRS strategy for helping taxpayers in other languages. 
+<a href="https://go.usa.gov/xAfwq" target="_blank">https://go.usa.gov/xAfwq</a>
+
+IRS has free resources for small organizations and self-employed individuals with retirement plans. 
+Learn how to choose, maintain and correct your plan at: <a href="https://go.usa.gov/xAv3d" target="_blank">https://go.usa.gov/xAv3d</a>.
+
+Getting ready to file your 2020 tax return? Read these important IRS reminders:
+<a href="https://go.usa.gov/xAtk5" target="_blank">https://go.usa.gov/xAtk5</a>
+
+![Ugly can be lovable, but not the ugly scan of unemployment compensation identity theft](/files/IDtheftUnemploymentCompensation.jpg)
+If someone has used your identity to claim unemployment compensation, IRS has guidance that may help: 
+<a href="https://go.usa.gov/xAFwr" target="_blank">https://go.usa.gov/xAFwr</a>
+
