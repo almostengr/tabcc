@@ -43,6 +43,16 @@ jobs:
         port: ${{ secrets.PORT_NUMBER }}
         user: ${{ secrets.USERNAME }}
 
+  sitemappush:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+    - name: Sitemap Ping to search engines
+      uses: atymic/sitemap-ping-action@1.0.0
+      with:
+        sitemap-url: https://tuscblackchamber.org/sitemap.xml
+        
+  
   # test:
   # runs-on: ubuntu-latest
   # needs: deploy
