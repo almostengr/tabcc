@@ -50,7 +50,7 @@ jobs:
     - name: Sitemap Ping to search engines
       uses: atymic/sitemap-ping-action@1.0.0
       with:
-        sitemap-url: https://tuscblackchamber.org/sitemap.xml
+        sitemap-url: http://tuscblackchamber.org/sitemap.xml
         
   
   # test:
