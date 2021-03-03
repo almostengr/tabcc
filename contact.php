@@ -391,7 +391,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-03-03 04:27:34.541503+00:00 -->
+      <!-- Last updated: 2021-03-03 04:30:26.152235+00:00 -->
     </div>
   </footer>
   
