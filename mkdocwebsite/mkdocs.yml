@@ -63,6 +63,9 @@ theme:
     - url: https://www.facebook.com/pg/tuscblackcc/events/
       name: EVENTS
       button: false
+    - url: /jobs
+      name: JOBS
+      button: false
     - url: /contact.php
       name: CONTACT
       button: false
@@ -147,6 +150,9 @@ theme:
         - url:  /photos
           name: Photos
           icon: fas fa-photo-video
+        - url: /jobs
+          name: Job Opportunities
+          icon: fas fa-building
         - url: /
           name: tuscblackchamber.org
           icon: fas fa-globe-africa
