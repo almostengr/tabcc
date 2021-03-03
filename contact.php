@@ -96,11 +96,19 @@ require($HOMEPATH);
         
         
         <li class="nav-item">
+          <a class="nav-link text-black" href="/jobs">JOBS</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
           <a class="nav-link text-black" href="/contact.php">CONTACT</a>
         </li>
         
         
       </ul>
+      
+      
       
       
       
@@ -333,6 +341,16 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
           
           <p>
             
+            <i class="fas fa-building"></i>
+            
+            
+            <a href="/jobs" class="text-white">
+              Job Opportunities</a>
+            
+          </p>
+          
+          <p>
+            
             <i class="fas fa-globe-africa"></i>
             
             
@@ -373,7 +391,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-02-11 04:41:21.124964+00:00 -->
+      <!-- Last updated: 2021-03-03 04:27:34.541503+00:00 -->
     </div>
   </footer>
   
