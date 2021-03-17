@@ -24,7 +24,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     }
 
     if ($mail_result) {
-    ?>
+?>
         <div class="bg-success text-light container py-2 my-5" id="successmessage">
             Your request has been submitted successfully!
         </div>
@@ -76,6 +76,9 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
             <label for="cresponse" class="required">Your Comment or Question</label>
             <textarea class="form-control" rows="4" id="cresponse" placeholder="How can we help you?" name="cresponse" minlength="100"></textarea>
             <div class="text-muted font-italic">Minimum 100 characters. The more details, the better</div>
+        </p>
+        <p>
+            <div class="g-recaptcha" data-sitekey="6Lfxf4IaAAAAABcuXGqO3MnunwQq7uiqaLAzojgT"></div>
         </p>
         <p>
             <input type="submit" class="form-control btn btn-dark-gray" value="Submit">
