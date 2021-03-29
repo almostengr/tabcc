@@ -190,31 +190,31 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     <form method="POST" action="/contact.php" id="contactform">
         <p>
             <label for="customerfirst" class="required">First Name</label>
-            <input class="form-control" name="customerfirst" type="text" placeholder="First Name" minlength="3" required="required">
+            <input class="form-control" id="customerfirst" name="customerfirst" type="text" placeholder="First Name" minlength="3" required="required">
         </p>
         <p>
             <label for="customerlast" class="required">Last Name</label>
-            <input class="form-control" name="customerlast" type="text" placeholder="Last Name" minlength="3" required="required">
+            <input class="form-control" id="customerlast" name="customerlast" type="text" placeholder="Last Name" minlength="3" required="required">
         </p>
         <p>
             <label for="emailaddress" class="required">Email Address</label>
-            <input class="form-control" name="emailaddress" type="email" placeholder="Email Address" minlength="10" required="required">
+            <input class="form-control" id="emailaddress" name="emailaddress" type="email" placeholder="Email Address" minlength="10" required="required">
         </p>
         <p>
             <label for="phonenumber" class="required">Phone Number</label>
-            <input class="form-control" type="tel" placeholder="Phone Number" minlength="10" name="phonenumber" maxlength="12" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+            <input class="form-control" type="tel" placeholder="Phone Number" minlength="10" id="phonenumber" name="phonenumber" maxlength="12" required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             <div class="text-muted font-italic">Enter number in 555-555-5555 format.</div>
         </p>
         <p>
             <label for="cresponse" class="required">Your Comment or Question</label>
-            <textarea class="form-control" rows="4" id="cresponse" placeholder="How can we help you?" name="cresponse" minlength="100"></textarea>
+            <textarea class="form-control" rows="4" placeholder="How can we help you?" id="cresponse" name="cresponse" minlength="100"></textarea>
             <div class="text-muted font-italic">Minimum 100 characters. The more details, the better</div>
         </p>
         <p>
             <div class="g-recaptcha" data-sitekey="6Lfxf4IaAAAAABcuXGqO3MnunwQq7uiqaLAzojgT"></div>
         </p>
         <p>
-            <input type="submit" class="form-control btn btn-dark-gray" value="Submit">
+            <button id="submit" type="submit" class="form-control btn btn-dark-gray">Submit</button>
         </p>
     </form>
 <?php
@@ -394,7 +394,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-03-27 02:01:33.645655+00:00 -->
+      <!-- Last updated: 2021-03-29 01:17:15.789879+00:00 -->
     </div>
   </footer>
   
