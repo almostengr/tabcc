@@ -180,8 +180,10 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     </p>
     <h2>Mailing Address</h2>
     <p>
-        2247 Fikes Lane<br />
-        Tuscaloosa, AL 35401
+        TABCC<br />
+        c/o Patricia Cade<br />
+        6712 2nd Avenue<br />
+        Thomaston, AL 36783
     </p>
     <h2>Phone Number</h2>
     <p><a href="tel:2056148585">205-614-8585</a></p>
@@ -394,7 +396,7 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2021-05-02 19:09:12.471029+00:00 -->
+      <!-- Last updated: 2021-05-02 19:20:48.942081+00:00 -->
     </div>
   </footer>
   
