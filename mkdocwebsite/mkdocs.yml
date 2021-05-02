@@ -70,13 +70,13 @@ theme:
       name: CONTACT
       button: false
   featurette:
-    - heading: Women Business Owner Forum
-      description: The ASBCC present 4 Ladies Only... 2021 Women Business Owner Forum. Will take place on March 30, 2021 from 12 PM-1:30 PM. TO register, scan the QR code on the flyer or click the Register Now button below.
+    - heading: SBA Offers Disaster Assistance for March 2021 Storms
+      description: Businesses in Blount, Chambers, Cherokee, Chilton, Cleburne, Coosa, Dallas, Etowah, Greene, Marengo, Saint Clair, Tallapoosa, Talladega, Tuscaloosa and Walker counties in Alabama are eligble for low-interest disaster loans from the SBA (Small Business Administration).
+      imageurl: /images/headerlogo.jpg
       bgcolor: bg-yellow
       textcolor: text-black
-      imageurl: /images/ASBCC-4 Women Only 20211024_1.jpg
-      buttontext: Register Now!
-      buttonlink: https://www.eventbrite.com/e/4-women-only-2021-women-business-owner-forum-virtual-event-registration-146957597129
+      buttontext: More Disaster Assistance Info
+      buttonlink: /resources/sba-disaster-assistance-march-2021
     - heading: Paycheck Protection Program (PPP)
       description: Certain eligible borrowers that previously received a PPP loan are eligible for a second loan with the same loan terms through the additional funding Congress passed. Borrowers can apply for a Second Draw PPP Loan until March 31, 2021.
       bgcolor: bg-white
