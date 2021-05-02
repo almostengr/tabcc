@@ -47,8 +47,10 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     </p>
     <h2>Mailing Address</h2>
     <p>
-        2247 Fikes Lane<br />
-        Tuscaloosa, AL 35401
+        TABCC<br />
+        c/o Patricia Cade<br />
+        6712 2nd Avenue<br />
+        Thomaston, AL 36783
     </p>
     <h2>Phone Number</h2>
     <p><a href="tel:2056148585">205-614-8585</a></p>
