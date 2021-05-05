@@ -59,15 +59,15 @@ if (isset($_POST['emailaddress']) && isset($HELPDESK_EMAIL)) {
     <form method="POST" action="/contact.php" id="contactform">
         <p>
             <label for="customerfirst" class="required">First Name</label>
-            <input class="form-control" id="customerfirst" name="customerfirst" type="text" placeholder="First Name" minlength="3" required="required">
+            <input class="form-control" id="customerfirst" name="customerfirst" type="text" minlength="3" required="required">
         </p>
         <p>
             <label for="customerlast" class="required">Last Name</label>
-            <input class="form-control" id="customerlast" name="customerlast" type="text" placeholder="Last Name" minlength="3" required="required">
+            <input class="form-control" id="customerlast" name="customerlast" type="text" minlength="3" required="required">
         </p>
         <p>
             <label for="emailaddress" class="required">Email Address</label>
-            <input class="form-control" id="emailaddress" name="emailaddress" type="email" placeholder="Email Address" minlength="10" required="required">
+            <input class="form-control" id="emailaddress" name="emailaddress" type="email" minlength="10" required="required">
         </p>
         <p>
             <label for="phonenumber" class="required">Phone Number</label>

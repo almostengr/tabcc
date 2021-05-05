@@ -27,6 +27,7 @@ theme:
     - 404.html
     - 500.html
     - contact.php
+    - membershipapply.php
   # extracss: []
   # extrajs: []
   # sitemessage:
