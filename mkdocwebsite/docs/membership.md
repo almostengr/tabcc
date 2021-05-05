@@ -21,32 +21,26 @@ title: Membership
 
 ## Become A Member
 
-If you wish to join the Tuscaloosa Area Black Chamber of Commerce, then apply now. A
-[printable membership application](/files/TABCC_Interest_Membership_20171128.pdf)
-is also available.
+If you wish to join the Tuscaloosa Area Black Chamber of Commerce, please complete the
+[printable membership application](/files/TABCC_Interest_Membership_20171128.pdf).
 
-## Pay Dues Online
+## Pay Membership Dues Online
 
 To pay dues online, use the form below to select the membership type that you are paying for and 
 then click the Buy Now button or scan the QR code below to pay with Paypal.
 
 
-
+<div class="row">
+<div class="col">
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="5QAN9KT26KK34">
-    <p>
-        To complete the membership application process, you will need to make your payment. You can make
-        your payment by doing either: <br />
-        <ol>
-            <li>Send a check or money order to: <br />
-                TABCC<br />c/o Patricia Cade<br />6712 2nd Avenue<br />Thomaston, AL 36783</li>
-            <li>PayPal by selecting your membership level and clicking the Buy Now button below</li>
-        </ol>
-    </p>
     <table>
         <tr>
-            <td><input type="hidden" name="on0" value="Membership Type">Membership Type</td>
+            <td>
+                <input type="hidden" name="on0" value="Membership Type">
+                <strong>Membership Type</strong>
+            </td>
         </tr>
         <tr>
             <td>
@@ -67,3 +61,8 @@ then click the Buy Now button or scan the QR code below to pay with Paypal.
     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="Buy Now">
     <img alt="Major credit cards accepted" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+</div>
+<div class="col">
+<img src="/images/qrcode.png" alt="Scan to pay with Paypal">
+</div>
+</div>
