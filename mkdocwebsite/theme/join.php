@@ -2,52 +2,52 @@
 $HOMEPATH = str_replace("public_html", "", $_SERVER['DOCUMENT_ROOT']);
 $HOMEPATH .= "phpenv.php";
 require($HOMEPATH);
+?>
 
-function sendEmail($HELPDESK_EMAIL)
-{
+{% extends "base.html" %}
+
+{% block content %}
+<h1 id="contact">Online Membership Application</h1>
+
+<?php
+$showApplicationForm = false;
+$showPaymentForm = false;
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $mail_result = false;
+
     date_default_timezone_set('America/Chicago');
     $new_line = "\r\n";
-    $current_time = date("Y-m-d H:i:s");
     $message = print_r($_POST, true);
-    $message .= "Submitted " . $current_time . $new_line;
+    $message .= "Submitted " . date("Y-m-d H:i:s") . $new_line;
     $message .= "IP Address " . $_SERVER['REMOTE_ADDR'];
-    $subject = "TABCC Membership Application " . $current_time;
-    $headers = implode("", array('From' => $_POST['emailaddress']));
+    $subject = "TABCC Membership Application Submission";
+    $headers = implode("", array('From' => $_POST['emailAddress']));
 
-    if ($_POST['emailaddress'] == "tester@tuscblackchamber.org") {
+    if ($_POST['emailAddress'] == "tester@tuscblackchamber.org") {
         $mail_result = true;
     } else {
         $mail_result = mail($HELPDESK_EMAIL, $subject, $message, $headers);
     }
 
-    return $mail_result;
-}
-
-function formSubmissionHasErrors()
-{
-    $result = sendEmail($HELPDESK_EMAIL);
-
-    if ($result) {
-?>
+    if ($mail_result) {
+        $showPaymentForm = true;
+        ?>
         <div class="bg-success text-light container py-2 my-5" id="successmessage">
             Your application has been submitted successfully.
         </div>
-    <?php
-        displayPaypalForm();
-        return true;
+        <?php
     } else {
-    ?>
+        $showApplicationForm = true;
+        ?>
         <div class="bg-danger text-light container py-2 my-5" id="failuremessage">
             An error occurred when attempting to process your request.
         </div>
-    <?php
+        <?php
     }
-
-    return false;
 }
 
-function displayPaypalForm()
-{
+if ($showPaymentForm == true) {
     ?>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
@@ -70,7 +70,7 @@ function displayPaypalForm()
                     <select name="os0">
                         <option value="Individual (Non-Proprietor)">Individual (Non-Proprietor) $100.00 USD</option>
                         <option value="Associate (Nonprofit Organizations, Churches)">Associate (Nonprofit Organizations, Churches) $125.00 USD</option>
-                        <option value="Business I (Gross Sales < $250,000)">Business I (Gross Sales < $250,000) $150.00 USD</option> 
+                        <option value="Business I (Gross Sales < $250,000)">Business I (Gross Sales < $250,000) $150.00 USD</option>
                         <option value="Business II (Gross Sales > $250,000)">Business II (Gross Sales > $250,000) $250.00 USD</option>
                         <option value="Corporate Partner, Bronze">Corporate Partner, Bronze $500.00 USD</option>
                         <option value="Corporate Partner, Silver">Corporate Partner, Silver $1,000.00 USD</option>
@@ -87,8 +87,7 @@ function displayPaypalForm()
 <?php
 }
 
-function displayForm()
-{
+if ($_SERVER['REQUEST_METHOD'] == "GET" || $showApplicationForm == true) {
 ?>
     <div>
         <ul>
@@ -106,7 +105,7 @@ function displayForm()
             <li>Connection to Chambers Across State of Alabama</li>
         </ul>
     </div>
-    <form method="post" action="/membershipapply.php" id="membershipform">
+    <form method="POST" action="/join.php" id="membershipform">
         <p>
             <label for="membershipType">Membership Type</label>
             <select value="membershipType" required="required" class="form-control">
@@ -125,22 +124,26 @@ function displayForm()
             <legend>Personal Information</legend>
             <p>
                 <label for="memberFirstName" class="required">First Name</label>
-                <input class="form-control" id="memberFirstName" name="memberFirstName" type="text" minlength="3" required="required">
+                <input class="form-control" id="memberFirstName" name="memberFirstName" type="text"
+                    minlength="3" required="required" value="<?php echo $_POST["memberFirstName"]; ?>">
             </p>
             <p>
                 <label for="memberLastName" class="required">Last Name</label>
-                <input class="form-control" id="memberLastName" name="memberLastName" type="text" minlength="3" required="required">
+                <input class="form-control" id="memberLastName" name="memberLastName" type="text"
+                    minlength="3" required="required" value="<?php echo $_POST["memberLastName"]; ?>">
             </p>
             <p>
                 <label for="memberTitle" class="">Title</label>
-                <input class="form-control" id="memberTitle" name="memberTitle" type="text">
+                <input class="form-control" id="memberTitle" name="memberTitle" type="text"
+                    value="<?php echo $_POST["memberTitle"]; ?>">
             </p>
         </fieldset>
         <fieldset>
             <legend>Business Information</legend>
             <p>
                 <label for="businessName">Business Name</label>
-                <input class="form-control" id="businessName" name="businessName" type="text">
+                <input class="form-control" id="businessName" name="businessName" type="text"
+                    value="<?php echo $_POST["businessName"]; ?>">
             </p>
             <p>
                 <label for="businessCategory">Business Category</label>
@@ -166,29 +169,33 @@ function displayForm()
             </p>
             <p>
                 <label for="numberOfEmployees">Number of Employees</label>
-                <input type="number" id="numberOfEmployees" name="numberOfEmployees">
+                <input type="number" id="numberOfEmployees" name="numberOfEmployees"
+                    value="<?php echo $_POST["numberOfEmployees"]; ?>">
             </p>
         </fieldset>
         <fieldset>
             <legend>Contact Information</legend>
             <p>
                 <label for="phoneNumber" class="required">Phone Number</label>
-                <input class="form-control" type="tel" placeholder="555-555-5555" minlength="10" 
-                    id="phoneNumber" name="phoneNumber" maxlength="12"
-                    required="required" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <input class="form-control" type="tel" placeholder="555-555-5555" minlength="10"
+                    id="phoneNumber" name="phoneNumber" maxlength="12" required="required"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo $_POST["phoneNumber"]; ?>">
             </p>
             <p>
                 <label for="faxNumber" class="">Fax Number</label>
-                <input class="form-control" type="tel" placeholder="555-555-5555" id="faxNumber" 
-                    name="faxNumber" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <input class="form-control" type="tel" placeholder="555-555-5555" id="faxNumber"
+                    name="faxNumber" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    value="<?php echo $_POST["faxNumber"]; ?>">
             </p>
             <p>
                 <label for="emailAddress" class="required">Email Address</label>
-                <input class="form-control" id="emailAddress" name="emailAddress" type="email" minlength="10">
+                <input class="form-control" id="emailAddress" name="emailAddress" type="email"
+                    minlength="10" value="<?php echo $_POST["emailAddress"]; ?>">
             </p>
             <p>
                 <label for="website" class="">Website</label>
-                <input class="form-control" type="tel" id="website" name="website">
+                <input class="form-control" type="tel" id="website" name="website"
+                    value="<?php echo $_POST["website"]; ?>">
             </p>
         </fieldset>
         <p>
@@ -202,20 +209,4 @@ function displayForm()
 }
 ?>
 
-{% extends "base.html" %}
-
-{% block content %}
-<h1 id="contact">Online Membership Application</h1>
-<?php
-if (count($_POST) > 0) {
-    $hasErrors = formSubmissionHasErrors();
-}
-
-if ($hasErrors || count($_GET) > 0) {
-    displayForm();
-}
-// else if ($hasErrors == false && count($_POST) > 0) {
-//     displayPaypalForm();
-// }
-?>
 {% endblock %}

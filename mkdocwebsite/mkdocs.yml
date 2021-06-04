@@ -27,7 +27,7 @@ theme:
     - 404.html
     - 500.html
     - contact.php
-    - membershipapply.php
+    - join.php
   # extracss: []
   # extrajs: []
   # sitemessage:
@@ -66,6 +66,9 @@ theme:
       button: false
     - url: /jobs
       name: JOBS
+      button: false
+    - url: /join.php
+      name: JOIN
       button: false
     - url: /contact.php
       name: CONTACT

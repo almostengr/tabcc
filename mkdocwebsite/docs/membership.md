@@ -22,13 +22,10 @@ title: Membership
 ## Become A Member
 
 If you wish to join the Tuscaloosa Area Black Chamber of Commerce, then 
-[apply now](/membershipapply.php). A
-[printable membership application](/files/TABCC_Interest_Membership_20171128.pdf)
+[apply now](/join.php). 
+
+A [printable membership application](/files/TABCC_Interest_Membership_20171128.pdf)
 is also available.
-
-
-If you wish to join the Tuscaloosa Area Black Chamber of Commerce, please complete the
-[printable membership application](/files/TABCC_Interest_Membership_20171128.pdf).
 
 ## Pay Membership Dues Online
 
