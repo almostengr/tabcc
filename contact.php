@@ -90,7 +90,7 @@ require($HOMEPATH);
         
         
         <li class="nav-item">
-          <a class="nav-link text-black" href="https://www.facebook.com/pg/tuscblackcc/events/">EVENTS</a>
+          <a class="nav-link text-black" href="https://www.facebook.com/tuscblackcc/events/">EVENTS</a>
         </li>
         
         
@@ -341,6 +341,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <p>
             
             
+            <a href="https://eabcc.org/" class="text-white">
+              East Alabama Black<br />Chamber of Commerce</a>
+            
+          </p>
+          
+          <p>
+            
+            
+            <a href="http://hsvblackchamber.org" class="text-white">
+              Huntsville Black<br />Chamber of Commerce</a>
+            
+          </p>
+          
+          <p>
+            
+            
             <a href="https://mabcc.org/" class="text-white">
               Mobile Area Black<br />Chamber of Commerce</a>
             
@@ -357,16 +373,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <p>
             
             
-            <a href="http://naaachamber.org" class="text-white">
-              North Alabama African American<br />Chamber of Commerce</a>
+            <a href="https://www.facebook.com/River-Region-Black-Chamber-of-Commerce-100980845121297" class="text-white">
+              River Region Black<br />Chamber of Commerce</a>
             
           </p>
           
           <p>
             
             
-            <a href="#" class="text-white">
-              River Region Black<br />Chamber of Commerce</a>
+            <a href="https://wiregrassbcc.org/" class="text-white">
+              Wiregrass Black<br />Chamber of Commerce</a>
             
           </p>
           
@@ -457,7 +473,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2022-02-14 02:59:37.195355+00:00 -->
+      <!-- Last updated: 2022-06-08 02:25:03.807881+00:00 -->
     </div>
   </footer>
   
