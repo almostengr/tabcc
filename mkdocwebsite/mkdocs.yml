@@ -60,7 +60,7 @@ theme:
     - url: /resources
       name: RESOURCES
       button: false
-    - url: https://www.facebook.com/pg/tuscblackcc/events/
+    - url: https://www.facebook.com/tuscblackcc/events/
       name: EVENTS
       button: false
     - url: /jobs
@@ -138,14 +138,18 @@ theme:
           url: "http://www.alblackcc.org/"
         - name: Birmingham Metro Black<br />Chamber of Commerce
           url: "https://www.birminghammetrobcc.com/"
+        - name: East Alabama Black<br />Chamber of Commerce
+          url: "https://eabcc.org/"
+        - name: Huntsville Black<br />Chamber of Commerce
+          url: "http://hsvblackchamber.org"
         - name: Mobile Area Black<br />Chamber of Commerce
           url: "https://mabcc.org/"
         - name: Northeast Alabama Black<br />Chamber of Commerce
           url: "#"
-        - name: North Alabama African American<br />Chamber of Commerce
-          url: "http://naaachamber.org"
         - name: River Region Black<br />Chamber of Commerce
-          url: "#"
+          url: "https://www.facebook.com/River-Region-Black-Chamber-of-Commerce-100980845121297"
+        - name: Wiregrass Black<br />Chamber of Commerce
+          url: "https://wiregrassbcc.org/"
       - heading: "Other Links"
         links:
         - name: Contact
