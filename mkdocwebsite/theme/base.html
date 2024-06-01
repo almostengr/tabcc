@@ -264,12 +264,12 @@
   <footer class="{{ section.bgcolor }} {{ section.textcolor }}">
     <div class="container text-center py-3">
       <div class="col-sm-12">
-        &copy; Copyright {{ build_date_utc.strftime("%Y") }} {{ config.copyright }}
+        &copy; Copyright 2011-{{ build_date_utc.strftime("%Y") }} {{ config.copyright }}
         {% for link in section.links %}
         | <a href="{{ link.url | url }}">{{ link.name }}</a>
         {% endfor %}
         <br />
-        Website developed by <a href="https://rhtservices.net" target='_blank'>Robinson Handy and Technology Services
+        Website by <a href="https://rhtservices.net" target='_blank'>Robinson Handy and Technology Services
           LLC</a>
       </div>
       <div class="col-sm-12 pt-2">
