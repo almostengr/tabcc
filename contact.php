@@ -46,8 +46,7 @@ require($HOMEPATH);
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
 
   
@@ -290,16 +289,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
 
   
-  <section class="bg-dark text-white subfooter">
-    <div class="container text-center py-3">
+  <section class="bg-dark text-white subfooter px-5">
+    <div class=" text-center py-3">
       <div class="row">
         
         <div class="col-sm-12 col-md-4">
           <h4 class="subfooterheader text-yellow">Connect With TABCC!</h4>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fab fa-facebook"></i>
+            <i class="bi bi-facebook pr-2"></i>
             
             
             <a href="https://www.facebook.com/tuscblackcc" class="text-white">
@@ -307,9 +306,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fab fa-twitter"></i>
+            <i class="bi bi-twitter-x pr-2"></i>
             
             
             <a href="https://twitter.com/tuscblackcc" class="text-white">
@@ -322,67 +321,73 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="col-sm-12 col-md-4">
           <h4 class="subfooterheader text-yellow">Affiliate Links</h4>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
             <a href="http://www.alblackcc.org/" class="text-white">
-              Alabama State Black<br />Chamber of Commerce</a>
+              Alabama State Black Chamber of Commerce</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
             <a href="https://www.birminghammetrobcc.com/" class="text-white">
-              Birmingham Metro Black<br />Chamber of Commerce</a>
+              Birmingham Metro Black Chamber of Commerce</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
             <a href="https://eabcc.org/" class="text-white">
-              East Alabama Black<br />Chamber of Commerce</a>
+              East Alabama Black Chamber of Commerce</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
             <a href="http://hsvblackchamber.org" class="text-white">
-              Huntsville Black<br />Chamber of Commerce</a>
+              Huntsville Black Chamber of Commerce</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
             <a href="https://mabcc.org/" class="text-white">
-              Mobile Area Black<br />Chamber of Commerce</a>
+              Mobile Area Black Chamber of Commerce</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
-            <a href="#" class="text-white">
-              Northeast Alabama Black<br />Chamber of Commerce</a>
-            
-          </p>
-          
-          <p>
-            
-            
-            <a href="https://www.facebook.com/River-Region-Black-Chamber-of-Commerce-100980845121297" class="text-white">
-              River Region Black<br />Chamber of Commerce</a>
+            <a href="https://www.facebook.com/neabcc/" class="text-white">
+              Northeast Alabama Black Chamber of Commerce</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
+            
+            <i class="bi-briefcase-fill pr-2"></i>
             
             
             <a href="https://wiregrassbcc.org/" class="text-white">
-              Wiregrass Black<br />Chamber of Commerce</a>
+              Wiregrass Black Chamber of Commerce</a>
             
           </p>
           
@@ -391,9 +396,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="col-sm-12 col-md-4">
           <h4 class="subfooterheader text-yellow">Other Links</h4>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fas fa-id-card-alt"></i>
+            <i class="bi bi-person-rolodex pr-2"></i>
             
             
             <a href="/contact.php" class="text-white">
@@ -401,9 +406,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fas fa-phone"></i>
+            <i class="bi bi-telephone-fill pr-2"></i>
             
             
             <a href="tel:205-614-8585" class="text-white">
@@ -411,19 +416,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fas fa-photo-video"></i>
+            <i class="bi bi-camera pr-2"></i>
             
             
-            <a href="/photos" class="text-white">
+            <a href="https://www.facebook.com/tuscblackcc/photos" class="text-white">
               Photos</a>
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fas fa-building"></i>
+            <i class="bi bi-buildings-fill pr-2"></i>
             
             
             <a href="/jobs" class="text-white">
@@ -431,9 +436,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fas fa-globe-africa"></i>
+            <i class="bi bi-globe pr-2"></i>
             
             
             <a href="/" class="text-white">
@@ -441,9 +446,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
           </p>
           
-          <p>
+          <p class="text-left pl-4">
             
-            <i class="fas fa-user-shield"></i>
+            <i class="bi bi-shield-lock-fill pr-2"></i>
             
             
             <a href="/privacy" class="text-white">
@@ -473,7 +478,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2024-06-01 19:28:35.862560+00:00 -->
+      <!-- Last updated: 2024-06-01 21:39:42.340504+00:00 -->
     </div>
   </footer>
   
