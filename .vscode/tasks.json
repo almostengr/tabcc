@@ -4,7 +4,7 @@
         {
             "label": "mkdocs serve",
             "type": "shell",
-            "command": "mkdocs serve -f mkdocwebsite/mkdocs.yml",
+            "command": "mkdocs serve -f mkdocwebsite/mkdocs.yml --watch-theme",
             "group": "build"
         },
         {

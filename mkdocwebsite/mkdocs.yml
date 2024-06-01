@@ -119,13 +119,6 @@ theme:
       bgcolor: bg-yellow
       textcolor: text-black
       buttontext: Become A Member!
-    - heading: Whataburger Joins TABCC
-      description: Please help us congratulate Whataburger for joining TABCC as a corporate sponsor! You can visit their website at whataburger.com
-      buttonlink: https://locations.whataburger.com/search.html?q=Tuscaloosa,%20AL,%20USA
-      imageurl: /images/whataburger-logo-png-transparent.png
-      bgcolor: bg-white
-      textcolor: text-black
-      buttontext: Find A Location
   # promotions:
   #   - heading: Attention Business Owners!
   #     detail: Do you currently have a business or are planning on establishing your business in the Tuscaloosa, Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing programs and new initiatives that will help TABCC businesses move forward.
@@ -143,48 +136,53 @@ theme:
         links:
         - name: Facebook
           url: "https://www.facebook.com/tuscblackcc"
-          icon: fab fa-facebook
+          icon: bi bi-facebook
         - name: Twitter
           url: "https://twitter.com/tuscblackcc"
-          icon: fab fa-twitter
+          icon: bi bi-twitter-x
       - heading: Affiliate Links
         links:
-        - name: Alabama State Black<br />Chamber of Commerce
+        - name: Alabama State Black Chamber of Commerce
           url: "http://www.alblackcc.org/"
-        - name: Birmingham Metro Black<br />Chamber of Commerce
+          icon: bi-briefcase-fill
+        - name: Birmingham Metro Black Chamber of Commerce
           url: "https://www.birminghammetrobcc.com/"
-        - name: East Alabama Black<br />Chamber of Commerce
+          icon: bi-briefcase-fill
+        - name: East Alabama Black Chamber of Commerce
           url: "https://eabcc.org/"
-        - name: Huntsville Black<br />Chamber of Commerce
+          icon: bi-briefcase-fill
+        - name: Huntsville Black Chamber of Commerce
           url: "http://hsvblackchamber.org"
-        - name: Mobile Area Black<br />Chamber of Commerce
+          icon: bi-briefcase-fill
+        - name: Mobile Area Black Chamber of Commerce
           url: "https://mabcc.org/"
-        - name: Northeast Alabama Black<br />Chamber of Commerce
-          url: "#"
-        - name: River Region Black<br />Chamber of Commerce
-          url: "https://www.facebook.com/River-Region-Black-Chamber-of-Commerce-100980845121297"
-        - name: Wiregrass Black<br />Chamber of Commerce
+          icon: bi-briefcase-fill
+        - name: Northeast Alabama Black Chamber of Commerce
+          url: "https://www.facebook.com/neabcc/"
+          icon: bi-briefcase-fill
+        - name: Wiregrass Black Chamber of Commerce
           url: "https://wiregrassbcc.org/"
+          icon: bi-briefcase-fill
       - heading: "Other Links"
         links:
         - name: Contact
           url: /contact.php
-          icon: fas fa-id-card-alt
+          icon: bi bi-person-rolodex
         - name: 205-614-8585
           url: tel:205-614-8585
-          icon: fas fa-phone
-        - url:  /photos
+          icon: bi bi-telephone-fill
+        - url:  "https://www.facebook.com/tuscblackcc/photos"
           name: Photos
-          icon: fas fa-photo-video
+          icon: bi bi-camera
         - url: /jobs
           name: Job Opportunities
-          icon: fas fa-building
+          icon: bi bi-buildings-fill
         - url: /
           name: tuscblackchamber.org
-          icon: fas fa-globe-africa
+          icon: bi bi-globe
         - url: /privacy
           name: Privacy Policy
-          icon: fas fa-user-shield
+          icon: bi bi-shield-lock-fill
   footer:
     - bgcolor: bg-black
       textcolor: text-yellow
