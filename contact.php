@@ -44,8 +44,6 @@ require($HOMEPATH);
 
   
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
 
@@ -53,10 +51,7 @@ require($HOMEPATH);
   <link rel="shortcut icon" href="/images/SmallLogo250x151.png">
   
 
-  <!-- Custom styles for this template -->
   <link href="/css/style.min.css" rel="stylesheet">
-
-  
 </head>
 
 <body class="bg-black">
@@ -478,7 +473,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2024-06-01 21:49:55.790295+00:00 -->
+      <!-- Last updated: 2024-06-01 21:54:58.536093+00:00 -->
     </div>
   </footer>
   
@@ -486,10 +481,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-  <!-- <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script> -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script async src="/js/bootstrap.bundle.min.js"></script>
-  <script async src="https://kit.fontawesome.com/a076d05399.js"></script>
-  
   <script async src="/js/javascript.min.js"></script>
 </body>
 
