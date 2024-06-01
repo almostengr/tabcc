@@ -12,7 +12,7 @@ remote_name: origin
 remote_branch: website
 
 # Development server details
-dev_addr: 192.168.57.117:8080
+dev_addr: 10.10.10.104:8080
 
 # Appearance
 theme:
@@ -70,6 +70,21 @@ theme:
       name: CONTACT
       button: false
   featurette:
+    - heading: ASBCC Credit and Wealth Tour
+      description: 'Featured speakers include OWN Network TV Personality & Owner of Credit 1 USA, Attorney Maurice Scott and Desmond Douglas, Licensed Financial Advisor & Author: “In God We Trust:A Bible Study About Money”. Event will be held on June 4, 2024 at Plum Grove Baptist Church.'
+      imageurl: /images/creditwealth2024.png
+      bgcolor: bg-yellow
+      textcolor: text-black
+      buttontext: Register Now
+      buttonlink: "https://www.eventbrite.com/e/asbcc-credit-wealth-tour-2024-tuscaloosa-al-tickets-912243744597"
+    - heading: ASBCC Entrepreneurs and Innovators Conference
+      description: Conference takes place on June 20-21, 2024 at the Tuxedo Ballroom in Birmingham, Alabama. Registration is open until June 18, 2024.
+      imageurl: /images/asbccconference2024.png
+      bgcolor: bg-white
+      textcolor: text-black
+      buttontext: Get Event Details and Register
+      buttonlink: "https://www.alblackcc.org"
+
     - heading: SBA Offers Disaster Assistance for March 2021 Storms
       description: Businesses in Blount, Chambers, Cherokee, Chilton, Cleburne, Coosa, Dallas, Etowah, Greene, Marengo, Saint Clair, Tallapoosa, Talladega, Tuscaloosa and Walker counties in Alabama are eligble for low-interest disaster loans from the SBA (Small Business Administration).
       imageurl: /images/headerlogo.jpg
