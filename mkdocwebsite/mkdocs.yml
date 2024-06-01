@@ -27,8 +27,6 @@ theme:
     - 404.html
     - 500.html
     - contact.php
-  # extracss: []
-  # extrajs: []
   # sitemessage:
   #   - heading: ""
   #     detail: '<div class="text-center"><img src="/images/headerlogo.jpg" alt="TABCC logo and motto - TABCC, Connecting the Disconnected" ></div>'
