@@ -462,7 +462,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <footer class="bg-black text-yellow">
     <div class="container text-center py-3">
       <div class="col-sm-12">
-        &copy; Copyright 2011-2024 Tuscaloosa Area Black Chamber of Commerce (TABCC)
+        &copy; Copyright 2011-2025 Tuscaloosa Area Black Chamber of Commerce (TABCC)
         
         <br />
         Website by <a href="https://rhtservices.net" target='_blank'>Robinson Handy and Technology Services
@@ -473,7 +473,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         by a third-party. By continuing to use this site, you agree to the use of cookies unless you have disabled them.
         More information this is available in the Privacy Policy.
       </div>
-      <!-- Last updated: 2024-06-01 21:54:58.536093+00:00 -->
+      <!-- Last updated: 2025-03-14 01:41:34.140386+00:00 -->
     </div>
   </footer>
   
