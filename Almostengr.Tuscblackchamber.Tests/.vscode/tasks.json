@@ -2,24 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "mkdocs serve",
-            "type": "shell",
-            "command": "mkdocs serve -f mkdocwebsite/mkdocs.yml --watch-theme",
-            "group": "build"
-        },
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/Almostengr.Tuscblackchamber.Tests/Almostengr.Tuscblackchamber.Tests.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
             "label": "publish",
             "command": "dotnet",
             "type": "process",

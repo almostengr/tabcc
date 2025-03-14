@@ -12,7 +12,7 @@ remote_name: origin
 remote_branch: website
 
 # Development server details
-dev_addr: 10.10.10.104:8080
+dev_addr: 10.10.10.102:8080
 
 # Appearance
 theme:
@@ -68,42 +68,21 @@ theme:
       name: CONTACT
       button: false
   featurette:
-    - heading: ASBCC Credit and Wealth Tour
-      description: 'Featured speakers include OWN Network TV Personality & Owner of Credit 1 USA, Attorney Maurice Scott and Desmond Douglas, Licensed Financial Advisor & Author: “In God We Trust:A Bible Study About Money”. Event will be held on June 4, 2024 at Plum Grove Baptist Church.'
-      imageurl: /images/creditwealth2024.png
-      bgcolor: bg-yellow
-      textcolor: text-black
-      buttontext: Register Now
-      buttonlink: "https://www.eventbrite.com/e/asbcc-credit-wealth-tour-2024-tuscaloosa-al-tickets-912243744597"
-    - heading: ASBCC Entrepreneurs and Innovators Conference
-      description: Conference takes place on June 20-21, 2024 at the Tuxedo Ballroom in Birmingham, Alabama. Registration is open until June 18, 2024.
-      imageurl: /images/asbccconference2024.png
+    - heading: 2025 Monthly Meetings
+      description: We meet monthly on the 4th Thursday from 6-8PM at Cadence Bank, located at 2020 University Blvd, Tuscaloosa, Alabama. Please come out and join us.
+      # buttonlink: /resources
+      # buttontext: Find Out About Grants
       bgcolor: bg-white
       textcolor: text-black
-      buttontext: Get Event Details and Register
-      buttonlink: "https://www.alblackcc.org"
+      imageurl: /images/womenentrepreneur.jpg
 
-    - heading: SBA Offers Disaster Assistance for March 2021 Storms
-      description: Businesses in Blount, Chambers, Cherokee, Chilton, Cleburne, Coosa, Dallas, Etowah, Greene, Marengo, Saint Clair, Tallapoosa, Talladega, Tuscaloosa and Walker counties in Alabama are eligble for low-interest disaster loans from the SBA (Small Business Administration).
-      imageurl: /images/headerlogo.jpg
-      bgcolor: bg-yellow
-      textcolor: text-black
-      buttontext: More Disaster Assistance Info
-      buttonlink: /resources/sba-disaster-assistance-march-2021
-    - heading: Paycheck Protection Program (PPP)
-      description: Certain eligible borrowers that previously received a PPP loan are eligible for a second loan with the same loan terms through the additional funding Congress passed. Borrowers can apply for a Second Draw PPP Loan until March 31, 2021.
-      bgcolor: bg-white
-      textcolor: text-black
-      imageurl: /images/paycheckprotection.jpg
-      buttontext: Read more about PPP
-      buttonlink: /resources
     - heading: Small-Business Grants
       description: There are a number of small business grants that are available to small businesses. Find out more about these grants and to see if you qualify.
       buttonlink: /resources
       buttontext: Find Out About Grants
       bgcolor: bg-yellow
       textcolor: text-black
-      imageurl: /images/one_dollar_bill.jpg # https://pixabay.com/photos/bank-notes-dollar-us-dollars-usd-941246/
+      imageurl: /images/one_dollar_bill.jpg
     - heading: Serving Tuscaloosa and Surrounding Communities
       description: We provide business support, networking, and financial resources.
       imageurl: /images/serving_tuscaloosa.jpg
@@ -192,8 +171,8 @@ use_directory_urls: true
 strict: false
 
 plugins:
-  - minify:
-      minify_html: true
+  # - minify:
+  #     minify_html: true
 
 extra:
   generator: false
