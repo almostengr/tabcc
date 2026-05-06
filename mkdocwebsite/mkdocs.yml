@@ -12,7 +12,7 @@ remote_name: origin
 remote_branch: website
 
 # Development server details
-dev_addr: 10.10.10.102:8080
+dev_addr: 10.10.10.104:8080
 
 # Appearance
 theme:
@@ -68,7 +68,7 @@ theme:
       name: CONTACT
       button: false
   featurette:
-    - heading: 2025 Monthly Meetings
+    - heading: Monthly Meetings
       description: We meet monthly on the 4th Thursday from 6-8PM at Cadence Bank, located at 2020 University Blvd, Tuscaloosa, Alabama. Please come out and join us.
       # buttonlink: /resources
       # buttontext: Find Out About Grants
@@ -96,6 +96,7 @@ theme:
       bgcolor: bg-yellow
       textcolor: text-black
       buttontext: Become A Member!
+      buttonlink: /membership
   # promotions:
   #   - heading: Attention Business Owners!
   #     detail: Do you currently have a business or are planning on establishing your business in the Tuscaloosa, Alabama, West Central Alabama, or Black Belt of Alabama regions? Then you should join the Tuscaloosa Area Black Chamber of Commerce for resources and information that are only provided to members and partners. TABCC constantly developing programs and new initiatives that will help TABCC businesses move forward.
