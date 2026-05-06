@@ -61,10 +61,10 @@ theme:
     - url: https://www.facebook.com/tuscblackcc/events/
       name: EVENTS
       button: false
-    - url: /jobs
-      name: JOBS
-      button: false
-    - url: /contact.php
+    # - url: /jobs
+    #   name: JOBS
+    #   button: false
+    - url: /contact
       name: CONTACT
       button: false
   featurette:

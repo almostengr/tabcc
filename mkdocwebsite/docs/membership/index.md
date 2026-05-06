@@ -2,9 +2,7 @@
 title: Membership
 ---
 
-<div class="text-center pb-3">
-<img src="membership2026flyer.jpg" alt="TABCC logo and motto - TABCC, Connecting the Disconnected" >
-</div>
+![2026 Membership Flyer](membership2026flyer.jpg)
 
 ## Membership Benefits
 
@@ -17,15 +15,18 @@ title: Membership
 * Entry in the TABCC Member Directory
 * Free website review by [RHT Services LLC](https://rhtservices.net)
 * Annual business opportunity conference/expo
-* Job announcements
 
 ## Become A Member
 
-If you wish to join the Tuscaloosa Area Black Chamber of Commerce, please complete the
-[printable membership application](/files/TABCC_Interest_Membership_20171128.pdf).
+To join the Tuscaloosa Area Black Chamber of Commerce, please complete the
+[printable membership application](/membership/2026application.pdf) or the 
+[online membership application](https://docs.google.com/forms/d/e/1FAlpQLSfm6Mmw2tzbtPnnOHMw1WwWX4ollu17WmFKowSpaYUBt31qug/viewform).
 
 ## Pay Membership Dues Online
 
-To pay dues online, use the form below to select the membership type that you are paying for and 
+To pay dues online, use the QR below to select the membership type that you are paying for and 
 then click the Buy Now button or scan the QR code below to pay with Paypal.
 
+## Student Membership
+
+![TABCC student membership flyer](studentMembershipFlyer.jpg)

@@ -9,7 +9,7 @@ description: Information about the Tuscaloosa Area Black Chamber of Commerce
 
 ## Our Mission
 
-*The mission of the Tuscaloosa Area Black Chamber of Commerce, Inc. is to promote economic development in the Tuscaloosa County, AL African-American community and surrounding under-represented communities of West Alabama by developing economic empowerment strategies that will assist current and future Black or under-represented business owners in becoming sustainable.*
+*To promote economic development in Black and under-represented communities across West Alabama by advancing sustainable business growth through strategic partnerships, leadership development, and economic empowerment.*
 
 To this end, the corporation shall endeavor and sustain West Alabama communities, particularly Tuscaloosa and surrounding communities by:
 
