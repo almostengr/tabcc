@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,14 +28,9 @@ jobs:
     - name: Build website
       run:  /usr/bin/python3 -m mkdocs build -f website/mkdocs.yml -d public
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUSCBLACKCHAMBER_778CA }}
-          channelId: live
-          projectId: tuscblackchamber-778ca
+    - uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
+        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUSCBLACKCHAMBER_778CA }}
+        channelId: live
+        projectId: tuscblackchamber-778ca
