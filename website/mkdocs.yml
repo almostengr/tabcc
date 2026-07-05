@@ -27,7 +27,6 @@ theme:
   static_templates:
     - 404.html
     - 500.html
-    # - contact.php
   # sitemessage:
   #   - heading: ""
   #     detail: '<div class="text-center"><img src="/headerlogo.jpg" alt="TABCC logo and motto - TABCC, Connecting the Disconnected" ></div>'
@@ -56,8 +55,8 @@ theme:
     - url: /membership
       name: MEMBERSHIP
       button: false
-    - url: /resources
-      name: RESOURCES
+    - url: /blog
+      name: BLOG
       button: false
     - url: https://www.facebook.com/tuscblackcc/events/
       name: EVENTS
@@ -68,19 +67,18 @@ theme:
   featurette:
     - heading: Monthly Meetings
       description: We meet monthly on the 4th Thursday from 6-8PM at Cadence Bank, located at 2020 University Blvd, Tuscaloosa, Alabama. Please come out and join us.
-      # buttonlink: /resources
+      # buttonlink: /blog
       # buttontext: Find Out About Grants
       bgcolor: bg-white
       textcolor: text-black
-      imageurl: /images/womenentrepreneur.jpg
-
-    - heading: Small-Business Grants
-      description: There are a number of small business grants that are available to small businesses. Find out more about these grants and to see if you qualify.
-      buttonlink: /resources
-      buttontext: Find Out About Grants
-      bgcolor: bg-yellow
+      imageurl: /meeting.jpg
+    - heading: Latest Updates
+      description: For the latest updates about the Chamber and upcoming events, check out our blog.
+      bgcolor: bg-yellow 
       textcolor: text-black
-      imageurl: /images/one_dollar_bill.jpg
+      imageurl: /latestNews.jpg
+      buttontext: See Latest Updates
+      buttonlink: /blog
     - heading: Serving Tuscaloosa and Surrounding Communities
       description: We provide business support, networking, and financial resources.
       imageurl: /images/serving_tuscaloosa.jpg

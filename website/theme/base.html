@@ -93,29 +93,29 @@
 <body class="bg-black">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top {{ config.theme.mainnav.bgcolor }}">
     <div class="container-xl">
-    <a class="navbar-brand" href="/">{{ config.site_name_short }}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
+      <a class="navbar-brand" href="/">{{ config.site_name_short }}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          {% for link in config.theme.mainnav.links %}
+          {% if link.button == false %}
+          <li class="nav-item">
+            <a class="nav-link {{ config.theme.mainnav.linkcolor }}" href="{{ link.url | url }}">{{ link.name }}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
         {% for link in config.theme.mainnav.links %}
-        {% if link.button == false %}
-        <li class="nav-item">
-          <a class="nav-link {{ config.theme.mainnav.linkcolor }}" href="{{ link.url | url }}">{{ link.name }}</a>
-        </li>
+        {% if link.button == true %}
+        <form class="form-inline mt-2 mt-md-0 mr-1" action="{{ link.url }}" method="GET">
+          <button class="btn {{ config.theme.mainnav.buttoncolor }} my-2 my-sm-0" type="submit">{{ link.name }}</button>
+        </form>
         {% endif %}
         {% endfor %}
-      </ul>
-      {% for link in config.theme.mainnav.links %}
-      {% if link.button == true %}
-      <form class="form-inline mt-2 mt-md-0 mr-1" action="{{ link.url }}" method="GET">
-        <button class="btn {{ config.theme.mainnav.buttoncolor }} my-2 my-sm-0" type="submit">{{ link.name }}</button>
-      </form>
-      {% endif %}
-      {% endfor %}
-    </div>
+      </div>
     </div>
   </nav>
 
@@ -188,6 +188,11 @@
       </div>
     </div>
     {% endfor %}
+
+    {% elif page and page.url == "blog/" %}
+    <div class="container pt-3">
+      {% include "_blogIndex.html" %}
+    </div>
 
     {% elif page and page.meta.title %}
     <div class="container pt-3">
