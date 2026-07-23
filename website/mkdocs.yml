@@ -58,7 +58,7 @@ theme:
     - url: /blog
       name: BLOG
       button: false
-    - url: https://www.facebook.com/tuscblackcc/events/
+    - url: https://www.facebook.com/tuscblackcc/
       name: EVENTS
       button: false
     - url: /contact
@@ -118,9 +118,6 @@ theme:
         - name: Facebook
           url: "https://www.facebook.com/tuscblackcc"
           icon: bi bi-facebook
-        - name: Twitter
-          url: "https://twitter.com/tuscblackcc"
-          icon: bi bi-twitter-x
       - heading: Affiliate Links
         links:
         - name: Alabama State Black Chamber of Commerce

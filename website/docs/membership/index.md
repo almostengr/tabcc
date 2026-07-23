@@ -20,12 +20,14 @@ title: Membership
 
 To join the Tuscaloosa Area Black Chamber of Commerce, please complete the
 [printable membership application](/membership/2026application.pdf) or the 
-[online membership application](https://docs.google.com/forms/d/e/1FAlpQLSfm6Mmw2tzbtPnnOHMw1WwWX4ollu17WmFKowSpaYUBt31qug/viewform).
+[online membership application](https://docs.google.com/forms/d/1cDhfnxGRJvrOUJWF7gUaYMXHSYKW_X_5RwZm4ShpMGo/viewform).
 
 ## Pay Membership Dues Online
 
-To pay dues online, use the QR below to select the membership type that you are paying for and 
-then click the Buy Now button or scan the QR code below to pay with Paypal.
+To pay dues online, please complete the 
+[Membership Application](https://docs.google.com/forms/d/1cDhfnxGRJvrOUJWF7gUaYMXHSYKW_X_5RwZm4ShpMGo/viewform). 
+Once it has been received and processed, you will be sent an invoice to 
+submit your payment.
 
 ## Student Membership
 
