@@ -69,9 +69,9 @@ theme:
       description: Join TABCC's inaugural Business & Leadership Conference for mentoring, networking & the Rhythm & Blues Brunch.
       bgcolor: bg-yellow
       textcolor: text-black
-      imageurl: /blog/2026tabccConference.jpg
+      imageurl: /blog/Business & Leadership Conference Flyer_20260808_182521_0000.jpg
       buttontext: See Details and Purchase Tickets
-      buttonlink: /blog/2026.07.05-2026-tabcc-conference
+      buttonlink: /blog/2026.08.15-2026-tabcc-conference/
     - heading: Monthly Meetings
       description: We meet monthly on the 4th Thursday from 6-8PM at Cadence Bank, located at 2020 University Blvd, Tuscaloosa, Alabama. Please come out and join us.
       # buttonlink: /blog
