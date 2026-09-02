@@ -65,13 +65,13 @@ theme:
       name: CONTACT
       button: false
   featurette:
-    - heading: 2026 Business and Leadership Conference
-      description: Join TABCC's inaugural Business & Leadership Conference for mentoring, networking & the Rhythm & Blues Brunch.
+    - heading: 2026 Business and Leadership Conference Recap
+      description: Thank you to the sponsors and attendees for making TABCC's inaugural Business & Leadership Conference possible. Check out the highlights and photos of the event.
       bgcolor: bg-yellow
       textcolor: text-black
-      imageurl: /blog/Business & Leadership Conference Flyer_20260808_182521_0000.jpg
-      buttontext: See Details and Purchase Tickets
-      buttonlink: /blog/2026.08.15-2026-tabcc-conference/
+      imageurl: /blog/2026_conference_flyer.jpg
+      buttontext: See Highlights
+      buttonlink: /blog/2026.09.01-tabcc-conference-recap/
     - heading: Monthly Meetings
       description: We meet monthly on the 4th Thursday from 6-8PM at Cadence Bank, located at 2020 University Blvd, Tuscaloosa, Alabama. Please come out and join us.
       # buttonlink: /blog
@@ -149,15 +149,9 @@ theme:
         - name: 205-614-8585
           url: tel:205-614-8585
           icon: bi bi-telephone-fill
-        - url:  "https://www.facebook.com/tuscblackcc/photos"
-          name: Photos
-          icon: bi bi-camera
         - url: /jobs
           name: Job Opportunities
           icon: bi bi-buildings-fill
-        - url: /
-          name: tuscblackchamber.org
-          icon: bi bi-globe
         - url: /privacy
           name: Privacy Policy
           icon: bi bi-shield-lock-fill
